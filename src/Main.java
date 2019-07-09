@@ -4,13 +4,12 @@ public class Main {
 
         CellGrid cellGrid = new CellGrid();
         ConsolePrinter consolePrinter = new ConsolePrinter();
-        CellGridFormatter cellGridFormatter = new CellGridFormatter();
+        CellGridFormatter cellGridFormatter = new CellGridFormatter(cellGrid);
 
 //        consolePrinter.printCellGrid(cellGrid.getCellGrid());
 
-       String formattedGrid = cellGridFormatter.formatCellGrid(cellGrid.getCellGrid());
 
-        consolePrinter.printFormattedBoard(formattedGrid);
+        consolePrinter.printFormattedBoard(cellGridFormatter.getFormattedGrid());
 
 
 

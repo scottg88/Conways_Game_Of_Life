@@ -1,12 +1,23 @@
 public class CellGridFormatter {
 
+    private CellGrid cellGrid;
+    private String formattedGrid;
 
-    public String formatCellGrid(String[][] cellGrid){
+    public CellGridFormatter(CellGrid cellGrid){
+        this.cellGrid = cellGrid;
+        this.formattedGrid = formatCellGrid();
+    }
+
+    public String getFormattedGrid() {
+        return formattedGrid;
+    }
+
+    private String formatCellGrid(){
         String formattedGrid = "";
-        for(int row = 0; row < cellGrid.length; row++){
+        for(int row = 0; row < this.cellGrid.getCellGrid().length; row++){
             formattedGrid = formattedGrid.concat("\n");
-            for(int column = 0; column < cellGrid[row].length; column++){
-                formattedGrid = formattedGrid.concat(cellGrid[row][column] + " ");
+            for(int column = 0; column < this.cellGrid.getCellGrid()[row].length; column++){
+                formattedGrid = formattedGrid.concat(this.cellGrid.getCellGrid()[row][column] + " ");
 //
             }
         }
