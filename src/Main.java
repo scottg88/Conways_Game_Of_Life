@@ -2,7 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CellGrid cellGrid = new CellGrid();
+        Cell cell = new Cell();
+        CellGrid cellGrid = new CellGrid(cell);
         ConsolePrinter consolePrinter = new ConsolePrinter();
         CellGridFormatter cellGridFormatter = new CellGridFormatter(cellGrid);
 
