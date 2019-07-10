@@ -5,12 +5,17 @@ public class Main {
         Cell cell = new Cell();
         CellGrid cellGrid = new CellGrid(cell);
         ConsolePrinter consolePrinter = new ConsolePrinter();
-        CellGridFormatter cellGridFormatter = new CellGridFormatter(cellGrid);
+        CellAndGridFormatter cellAndGridFormatter = new CellAndGridFormatter();
+
+
 
 //        consolePrinter.printCellGrid(cellGrid.getCellGrid());
 
+        consolePrinter.printCellGridWithFormatting(cellGrid.getCellGrid());
 
-        consolePrinter.printFormattedBoard(cellGridFormatter.getFormattedGrid());
+
+
+
 
 
 

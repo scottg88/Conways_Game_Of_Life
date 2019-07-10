@@ -1,16 +1,30 @@
+import java.util.Arrays;
+import java.util.StringJoiner;
+
 public class ConsolePrinter {
 
 
 
-    public void printCellGrid(String [][] cellGrid){
-        for(int row = 0; row < cellGrid.length; row ++) {
-            for (int column = 0; column < cellGrid[row].length; column++) {
-                System.out.println(cellGrid[row][column]);
-            }
+
+    public void printCellGrid(String[][] cellGrid){
+        for(String[] row : cellGrid){
+            System.out.println(Arrays.toString(row));
         }
     }
 
-    public void printFormattedBoard(String formattedCellGrid){
-        System.out.println(formattedCellGrid);
+    public void printCellGridWithFormatting(String [][] cellGrid){
+        for(String[] row : cellGrid){
+            StringJoiner stringJoiner = new StringJoiner(" | ");
+            for(String column : row){
+                stringJoiner.add(String.format("%s", column));
+            }
+            System.out.println(stringJoiner.toString());
+        }
     }
+
+    public void
+
+//    public void printFormattedBoard(String formattedCellGrid){
+//        System.out.println(formattedCellGrid);
+//    }
 }

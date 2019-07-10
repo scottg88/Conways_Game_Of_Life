@@ -1,5 +1,7 @@
 public class CellGrid {
 
+//    should cell grid just be a grid, or should it be initialised with live and dead cells?
+
     private String[][] cellGrid;
     private Cell cell;
 
@@ -20,7 +22,7 @@ public class CellGrid {
     private void initialiseCellGrid(){
             for(int row = 0; row < this.cellGrid.length; row ++){
                 for(int column = 0; column < this.cellGrid[row].length; column++){
-                    cellGrid[row][column] = cell.getCell();
+                    cellGrid[row][column] = ;
                 }
             }
     }
