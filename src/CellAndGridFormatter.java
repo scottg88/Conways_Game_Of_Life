@@ -1,25 +1,44 @@
+import java.util.Arrays;
+import java.util.StringJoiner;
+
 public class CellAndGridFormatter {
 
+//    private Cell cell = new Cell();
 
-    public String formatCellGrid(String[][] cellGrid){
-        String formattedGrid = "";
-        for(int row = 0; row <cellGrid.length; row++){
-            formattedGrid = formattedGrid.concat("\n");
-            for(int column = 0; column < cellGrid.length; column++){
-                formattedGrid = formattedGrid.concat(cellGrid[row][column] + " ");
+    public static String[][] getCellGridAsStringArray(CellGrid cellGrid){
+        String[][] stringCellGrid = new String[cellGrid.getRows()][cellGrid.getColumns()];
+
+        for(int row = 0; row < cellGrid.getRows(); row++){
+            for(int column = 0; column < cellGrid.getColumns(); column++){
+                if(cellGrid.getCellIsDead(row, column)){
+                    stringCellGrid[row][column] = "x";
+                }
+                else{
+                    stringCellGrid[row][column] = "o";
+                }
             }
         }
-        return formattedGrid;
+        return stringCellGrid;
     }
 
+//    public String[][] placeCellsOnGrid(String[][] cellGrid){
+//        for(int row = 0; row < cellGrid.length; row++){
+//            for(int column = 0; column < cellGrid[row].length; column++){
+//                cellGrid[row][column] = formatCell();
+//            }
+//        }
+//        return cellGrid;
+//    }
+
 //    private String formatCell(){
-//        if(!this.isAlive){
-//            cell = "x";
+//        String formattedCell = "";
+//        if(this.cell.getIsDead()){
+//            formattedCell = formattedCell.concat("x");
 //        }
 //        else {
-//            cell = "o";
+//            formattedCell = formattedCell.concat("o");
 //        }
-//        return cell;
+//        return formattedCell;
 //    }
 
 }

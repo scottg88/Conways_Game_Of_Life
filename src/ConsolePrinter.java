@@ -6,14 +6,14 @@ public class ConsolePrinter {
 
 
 
-    public void printCellGrid(String[][] cellGrid){
-        for(String[] row : cellGrid){
-            System.out.println(Arrays.toString(row));
-        }
-    }
+//    public void printCellGrid(String[][] cellGrid){
+//        for(String[] row : cellGrid){
+//            System.out.println(Arrays.toString(row));
+//        }
+//    }
 
-    public void printCellGridWithFormatting(String [][] cellGrid){
-        for(String[] row : cellGrid){
+    public static void printGridWithFormatting(String [][] grid){
+        for(String[] row : grid){
             StringJoiner stringJoiner = new StringJoiner(" | ");
             for(String column : row){
                 stringJoiner.add(String.format("%s", column));
@@ -22,7 +22,7 @@ public class ConsolePrinter {
         }
     }
 
-    public void
+//    public void
 
 //    public void printFormattedBoard(String formattedCellGrid){
 //        System.out.println(formattedCellGrid);

@@ -2,22 +2,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Cell cell = new Cell();
-        CellGrid cellGrid = new CellGrid(cell);
-        ConsolePrinter consolePrinter = new ConsolePrinter();
-        CellAndGridFormatter cellAndGridFormatter = new CellAndGridFormatter();
+        CellGrid cellGrid = new CellGrid();
 
+        String[][] newCellGrid = CellAndGridFormatter.getCellGridAsStringArray(cellGrid);
 
-
-//        consolePrinter.printCellGrid(cellGrid.getCellGrid());
-
-        consolePrinter.printCellGridWithFormatting(cellGrid.getCellGrid());
-
-
-
-
-
-
+        ConsolePrinter.printGridWithFormatting(newCellGrid);
 
     }
 }
