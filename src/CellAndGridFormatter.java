@@ -32,7 +32,7 @@ public class CellAndGridFormatter {
 
 //    private String formatCell(){
 //        String formattedCell = "";
-//        if(this.cell.getIsDead()){
+//        if(this.cell.getIsAlive()){
 //            formattedCell = formattedCell.concat("x");
 //        }
 //        else {

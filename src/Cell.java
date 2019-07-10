@@ -2,25 +2,25 @@ public class Cell {
 
 //    should cell have a default dead state, and a switch to bring it to life, or, should cell be passed a state when instantiated
 
-    private boolean isDead;
+    private boolean isAlive;
 
     public Cell (){
-        this.isDead = true;
+        this.isAlive = false;
     }
 
-    public boolean getIsDead() {
-        return isDead;
+    public boolean getIsAlive() {
+        return isAlive;
     }
 
     public void changeState(){
-        if (isDead){
-            isDead = false;
-        }
-        else {
-            isDead = true;
-        }
+//        if (!this.isAlive){
+//            this.isAlive = true;
+//        }
+//        else {
+//            this.isAlive = false;
+//        }
 
-//        this.isDead = !(this.isDead);
+        this.isAlive = !(this.isAlive);
     }
 
 

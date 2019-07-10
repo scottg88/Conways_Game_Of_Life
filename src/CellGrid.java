@@ -24,7 +24,7 @@ public class CellGrid {
     }
 
     public Boolean getCellIsDead(int x, int y){
-        return this.cellGrid[x][y].getIsDead();
+        return this.cellGrid[x][y].getIsAlive();
     }
 
 //    public Cell[][] getCellGrid() {
