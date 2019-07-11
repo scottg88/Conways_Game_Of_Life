@@ -24,8 +24,8 @@ public class CellGridTest {
     @Test
     public void getCellIsDeadReturnsCurrentStateOfCellAtSpecifiedCoordinates(){
         CellGrid cellGrid = new CellGrid(6,6);
-        boolean cellIsAlive = cellGrid.getDefaultCellStatus(2,2);
-
+        boolean cellIsAlive = cellGrid.getCellIsAlive(2,2);
+        System.out.println(cellIsAlive);
         assertFalse(cellIsAlive);
     }
 

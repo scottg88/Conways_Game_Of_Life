@@ -13,14 +13,14 @@ public class Cell {
     }
 
     public void changeState(){
-//        if (!this.isAlive){
-//            this.isAlive = true;
-//        }
-//        else {
-//            this.isAlive = false;
-//        }
+        if (!this.isAlive){
+            this.isAlive = true;
+        }
+        else {
+            this.isAlive = false;
+        }
 
-        this.isAlive = !(this.isAlive);
+//        this.isAlive = !(this.isAlive);
     }
 
 

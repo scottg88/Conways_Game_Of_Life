@@ -19,6 +19,7 @@ public class CellTest {
         assertTrue(cell.getIsAlive());
     }
 
+//    could be a false positive in this test, as the cell is dead in the first place
     @Test
     public void whenCellIsAliveChangeStateMakesCellDead(){
         Cell cell = new Cell();

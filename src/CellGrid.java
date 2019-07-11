@@ -21,7 +21,7 @@ public class CellGrid {
         return this.cellGrid[0].length;
     }
 
-    public Boolean getDefaultCellStatus(int x, int y){
+    public Boolean getCellIsAlive(int x, int y){
         return this.cellGrid[x][y].getIsAlive();
     }
 
