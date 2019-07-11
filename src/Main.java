@@ -7,8 +7,7 @@ public class Main {
         String[][] newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
 
         ConsolePrinter.printGridWithFormatting(newCellGrid);
-
-        System.out.println(cellGrid.getCellIsAlive(2,2));
+        
 
     }
 }

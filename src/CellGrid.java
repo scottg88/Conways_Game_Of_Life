@@ -25,6 +25,10 @@ public class CellGrid {
         return this.cellGrid[x][y].getIsAlive();
     }
 
+    public void setCellToAlive(int x, int y){
+        this.cellGrid[x][y].changeState();
+    }
+
 //    public Cell[][] getCellGrid() {
 //        return cellGrid;
 //    }
@@ -36,6 +40,8 @@ public class CellGrid {
             }
         }
     }
+
+
 
 
 
