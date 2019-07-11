@@ -3,16 +3,14 @@ public class CellGrid {
 //    should cell grid just be an grid, or should it be initialised with live and dead cells?
 
     private  Cell[][] cellGrid;
-//    private Cell cell;
+    private int rows;
+    private int columns;
 
-
-    public CellGrid(){
-        int rows = 6;
-        int columns = 6;
+    public CellGrid(int rows, int columns){
+        this.rows = rows;
+        this.columns = columns;
         this.cellGrid = new Cell[rows][columns];
         initialiseCellGrid();
-//        this.cell = cell;
-//        initialiseCellGrid();
     }
 
     public int getRows(){
@@ -23,7 +21,7 @@ public class CellGrid {
         return this.cellGrid[0].length;
     }
 
-    public Boolean getCellIsDead(int x, int y){
+    public Boolean getDefaultCellStatus(int x, int y){
         return this.cellGrid[x][y].getIsAlive();
     }
 
