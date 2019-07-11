@@ -4,15 +4,18 @@ import java.util.Scanner;
 
 public class UserInputManager {
 
-
-    public static ArrayList<Integer> getGridDimensions(){
-        Scanner userInput = new Scanner(System.in);
+    public static void getGridDimensions(){
         ArrayList<Integer> dimensions = new ArrayList<>();
+        int rows;
+        int columns;
+        Scanner userInput = new Scanner(System.in);
         String[] enteredDimensions = userInput.next().split(",");
         for(String dimension : enteredDimensions){
-            int dimensionAsInt = Integer.parseInt(dimension);
-            dimensions.add(dimensionAsInt);
+            int value = Integer.parseInt(dimension);
+            dimensions.add(value);
         }
-        return dimensions;
+        rows = dimensions.get(0);
+        columns = dimensions.get(1);
     }
+
 }
