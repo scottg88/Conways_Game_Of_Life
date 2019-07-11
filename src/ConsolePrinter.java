@@ -22,6 +22,10 @@ public class ConsolePrinter {
         }
     }
 
+    public static void enterDimensionsInstruction(){
+        System.out.println("Please enter dimensions of grid; i.e. 6,6");
+    }
+
 //    public void
 
 //    public void printFormattedBoard(String formattedCellGrid){

@@ -1,14 +1,15 @@
+import java.util.ArrayList;
+
 public class CellGrid {
 
 //    should cell grid just be an grid, or should it be initialised with live and dead cells?
 
     private  Cell[][] cellGrid;
-    private int rows;
-    private int columns;
 
-    public CellGrid(int rows, int columns){
-        this.rows = rows;
-        this.columns = columns;
+
+    public CellGrid(ArrayList<Integer> dimensions){
+        int rows = dimensions.get(0);
+        int columns = dimensions.get(1);
         this.cellGrid = new Cell[rows][columns];
         initialiseCellGrid();
     }
@@ -24,6 +25,7 @@ public class CellGrid {
     public Boolean getCellIsAlive(int x, int y){
         return this.cellGrid[x][y].getIsAlive();
     }
+
 
     public void setCellToAlive(int x, int y){
         this.cellGrid[x][y].changeState();
