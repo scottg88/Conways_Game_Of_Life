@@ -4,16 +4,19 @@ public class Main {
 
         ConsolePrinter.enterDimensionsInstruction();
 
+        int[] value;
         try {
-            int[] value = UserInputManager.getUserInput();
-            CellGrid cellGrid = new CellGrid(value[0], value[1]);
-            String[][] newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
-            ConsolePrinter.printGridWithFormatting(newCellGrid);
+            value = UserInputManager.getUserInput();
         }
         catch (IncorrectInputException message){
             System.err.println(message.getMessage());
-
+            return;
         }
+
+        CellGrid cellGrid = new CellGrid(value[0], value[1]);
+        String[][] newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
+        ConsolePrinter.printGridWithFormatting(newCellGrid);
+
 
 
 
