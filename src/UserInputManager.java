@@ -12,23 +12,18 @@ public class UserInputManager {
         Scanner userInput = new Scanner(System.in);
         String[] stringData = userInput.next().split(",");
         if(stringData.length == 2){
-            inputValues[0] = Integer.parseInt(stringData[0]);
-            inputValues[1] = Integer.parseInt(stringData[1]);
+            try {
+                inputValues[0] = Integer.parseInt(stringData[0]);
+                inputValues[1] = Integer.parseInt(stringData[1]);
+            }
+            catch (NumberFormatException e){
+                throw new IncorrectInputException("Input must be number,number: please try again", e);
+            }
         }
         else {
-            throw new IncorrectInputException("Wrong input, please try again");
+            throw new IncorrectInputException("Input must be number,number: please try again");
         }
         return inputValues;
-    }
-
-
-
-    private static int convertInputToInt(String[] userInput){
-        int data = 0;
-        for(String input : userInput){
-            data = Integer.parseInt(input);
-        }
-        return data;
     }
 
 }
