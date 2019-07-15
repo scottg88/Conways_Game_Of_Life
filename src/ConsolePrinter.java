@@ -15,7 +15,7 @@ public class ConsolePrinter {
     }
 
     public static void enterDimensionsInstruction(){
-        System.out.println("Please enter dimensions of grid; i.e. length,width");
+        System.out.println("Please enter dimensions of grid; i.e. rows,columns");
     }
 
     public static void enterLiveCellCoordinates(){

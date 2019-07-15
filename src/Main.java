@@ -1,6 +1,4 @@
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.Iterator;
 
 public class Main {
@@ -14,12 +12,13 @@ public class Main {
 
         try {
             value = UserInputManager.parseUserInput();
-            ConsolePrinter.enterLiveCellCoordinates();
         }
         catch (IncorrectInputException message){
             System.err.println(message.getMessage());
             return;
         }
+
+        ConsolePrinter.enterLiveCellCoordinates();
 
         CellGrid cellGrid = new CellGrid(value[0], value[1]);
 
@@ -37,15 +36,8 @@ public class Main {
         }
 
 
-
-
         String[][] newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
         ConsolePrinter.printGridWithFormatting(newCellGrid);
-
-
-
-
-
 
 
     }
