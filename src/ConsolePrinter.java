@@ -26,9 +26,7 @@ public class ConsolePrinter {
         System.out.println("Please enter dimensions of grid; i.e. 6,6");
     }
 
-//    public void
-
-//    public void printFormattedBoard(String formattedCellGrid){
-//        System.out.println(formattedCellGrid);
-//    }
+    public static void enterLiveCellCoordinates(){
+        System.out.println("Please enter coordinates of live cells; i.e. 2,2|3,2|1,6");
+    }
 }

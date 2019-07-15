@@ -4,6 +4,10 @@ import static org.junit.Assert.*;
 
 public class CellGridTranslatorTest {
 
+    /*
+    these tests need fixing so i'm not testing string arrays
+     */
+
     @Test
     public void whenGivenA2dArrayOfCellsReturnsA2dArrayOfStrings(){
         CellGrid cellGrid = new CellGrid(3,3);

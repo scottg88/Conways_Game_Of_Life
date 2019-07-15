@@ -7,19 +7,25 @@ import static org.junit.Assert.*;
 public class CellGridTest {
 
     @Test
-    public void cellGridInitialisesWithSpecifiedNumberOfRowsAndColumnsOfCells(){
+    public void cellGridInitialisesWithSpecifiedNumberOfRowsOfCells(){
 
         CellGrid cellGrid = new CellGrid(6,6);
 
-        ArrayList<Integer> expectedRowsAndColumns = new ArrayList<>();
-        expectedRowsAndColumns.add(6);
-        expectedRowsAndColumns.add(6);
+        int expectedRows = 6;
+        int actualRows = cellGrid.getRows();
 
-        ArrayList<Integer> actualRowsAndColumns = new ArrayList<>();
-        actualRowsAndColumns.add(cellGrid.getRows());
-        actualRowsAndColumns.add(cellGrid.getColumns());
+        assertEquals(expectedRows, actualRows);
+    }
 
-        assertEquals(expectedRowsAndColumns, actualRowsAndColumns);
+    @Test
+    public void cellGridInitialisesWithSpecifiedNumberOfColumnsOfCells(){
+
+        CellGrid cellGrid = new CellGrid(6,6);
+
+        int expectedColumns = 6;
+        int acutalColumns = cellGrid.getColumns();
+
+        assertEquals(expectedColumns, acutalColumns);
     }
 
     @Test

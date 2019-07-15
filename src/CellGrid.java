@@ -1,4 +1,6 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 public class CellGrid {
 
@@ -34,7 +36,7 @@ TODO: 1. go back to constructor taking two separate values for row and col
     }
 
 
-    public void setCellToAlive(int x, int y){
+    public void setCellToAlive(Integer x, Integer y){
         this.cellGrid[x][y].changeState();
     }
 
