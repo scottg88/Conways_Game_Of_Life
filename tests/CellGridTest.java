@@ -23,9 +23,9 @@ public class CellGridTest {
         CellGrid cellGrid = new CellGrid(6,6);
 
         int expectedColumns = 6;
-        int acutalColumns = cellGrid.getColumns();
+        int actualColumns = cellGrid.getColumns();
 
-        assertEquals(expectedColumns, acutalColumns);
+        assertEquals(expectedColumns, actualColumns);
     }
 
     @Test

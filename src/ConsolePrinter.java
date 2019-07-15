@@ -1,16 +1,8 @@
-import java.util.Arrays;
+
 import java.util.StringJoiner;
 
 public class ConsolePrinter {
 
-
-
-
-//    public void printCellGrid(String[][] cellGrid){
-//        for(String[] row : cellGrid){
-//            System.out.println(Arrays.toString(row));
-//        }
-//    }
 
     public static void printGridWithFormatting(String [][] grid){
         for(String[] row : grid){

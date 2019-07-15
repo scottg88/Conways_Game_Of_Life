@@ -26,8 +26,8 @@ public class UserInputManager {
         return inputValues;
     }
 
-    public static ArrayDeque<Integer> turnUserInputIntoCoordinates() throws IncorrectInputException{
-        ArrayDeque<Integer> coordinates = new ArrayDeque<>();
+    public static ArrayList<Integer> turnUserInputIntoCoordinates() throws IncorrectInputException{
+        ArrayList<Integer> coordinates = new ArrayList<>();
 
         Scanner userInput = new Scanner(System.in);
         String[] initialData = userInput.next().split("[| ,]");

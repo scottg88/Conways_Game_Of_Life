@@ -25,7 +25,7 @@ public class Main {
 
 
         try {
-            ArrayDeque<Integer> getCoordinates = UserInputManager.turnUserInputIntoCoordinates();
+            ArrayList<Integer> getCoordinates = UserInputManager.turnUserInputIntoCoordinates();
             Iterator<Integer> iterator = getCoordinates.iterator();
             while (iterator.hasNext()){
                 cellGrid.setCellToAlive(iterator.next(), iterator.next());
