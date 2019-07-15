@@ -23,10 +23,10 @@ public class ConsolePrinter {
     }
 
     public static void enterDimensionsInstruction(){
-        System.out.println("Please enter dimensions of grid; i.e. 6,6");
+        System.out.println("Please enter dimensions of grid; i.e. length,width");
     }
 
     public static void enterLiveCellCoordinates(){
-        System.out.println("Please enter coordinates of live cells; i.e. 2,2|3,2|1,6");
+        System.out.println("Please enter coordinates of live cells; i.e. x,y|x,y|x,y");
     }
 }

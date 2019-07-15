@@ -22,7 +22,7 @@ public class Main {
         }
 
         CellGrid cellGrid = new CellGrid(value[0], value[1]);
-        
+
 
         try {
             ArrayDeque<Integer> getCoordinates = UserInputManager.turnUserInputIntoCoordinates();

@@ -37,7 +37,7 @@ TODO: 1. go back to constructor taking two separate values for row and col
 
 
     public void setCellToAlive(Integer x, Integer y){
-        this.cellGrid[x][y].changeState();
+        this.cellGrid[x-1][y-1].changeState();
     }
 
 //    public Cell[][] getCellGrid() {
