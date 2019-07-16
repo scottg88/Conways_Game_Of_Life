@@ -24,11 +24,12 @@ public class Main {
 
 
         try {
-            ArrayList<Integer> getCoordinates = UserInputManager.turnUserInputIntoCoordinates();
-            Iterator<Integer> iterator = getCoordinates.iterator();
-            while (iterator.hasNext()){
-                cellGrid.setCellToAlive(iterator.next(), iterator.next());
-            }
+            ArrayList<Coordinates> coords = UserInputManager.turnUserInputIntoCoordinates();
+            cellGrid.setCellToAlive(coords);
+//            Iterator<Integer> iterator = getCoordinates.iterator();
+//            while (iterator.hasNext()){
+//                cellGrid.setCellToAlive(iterator.next(), iterator.next());
+//            }
         }
         catch (IncorrectInputException message){
             System.err.println(message.getMessage());

@@ -3,7 +3,7 @@ import java.util.*;
 
 
 public class UserInputManager {
-
+    private static ArrayList<Coordinates> coordinates = new ArrayList<>();
 
     public static int[] parseUserInput() throws IncorrectInputException{
 
@@ -26,15 +26,14 @@ public class UserInputManager {
         return inputValues;
     }
 
-    public static ArrayList<Integer> turnUserInputIntoCoordinates() throws IncorrectInputException{
-        ArrayList<Integer> coordinates = new ArrayList<>();
+    public static ArrayList<Coordinates> turnUserInputIntoCoordinates() throws IncorrectInputException{
 
         Scanner userInput = new Scanner(System.in);
         String[] initialData = userInput.next().split("[| ,]");
         if (initialData.length >= 2) {
             try {
                 for (String number : initialData) {
-                    coordinates.add(Integer.parseInt(number));
+                    coordinates.add(new Coordinates((Integer.parseInt(number)), (Integer.parseInt(number))));
                     }
             }
                 catch(NumberFormatException e) {

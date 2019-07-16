@@ -1,6 +1,4 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.StringJoiner;
 
 public class CellGrid {
 
@@ -36,8 +34,12 @@ TODO: 1. go back to constructor taking two separate values for row and col
     }
 
 
-    public void setCellToAlive(Integer x, Integer y){
-        this.cellGrid[x-1][y-1].changeState();
+    public void setCellToAlive(ArrayList<Coordinates> coords){
+        int[] coordinates = {};
+        for(int index = 0; index < coords.size(); index++){
+           coordinates = coords.get(index).getCoordinate();
+        }
+        this.cellGrid[coordinates[0]-1][coordinates[1]-1].changeState();
     }
 
 //    public Cell[][] getCellGrid() {
