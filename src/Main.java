@@ -33,9 +33,10 @@ public class Main {
 
 
 
-        for(int turns = 0; turns < 10; turns++){
+        for(int turns = 0; turns < 2; turns++){
 //          print
             newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
+            cellGrid.updateGrid();
             ConsolePrinter.printGridWithFormatting(newCellGrid);
             System.out.println("\n");
 //          prompt for input / wait
