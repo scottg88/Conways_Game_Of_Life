@@ -2,18 +2,49 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         ConsolePrinter.enterDimensionsInstruction();
-         ArrayList<Integer> dimensions = UserInputManager.getGridDimensions();
-
-        CellGrid cellGrid = new CellGrid(dimensions);
 
 
-        String[][] newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
+        int[] value;
+
+        try {
+            value = UserInputManager.turnUserInputIntoDimensions();
+        }
+        catch (IncorrectInputException message){
+            System.err.println(message.getMessage());
+            return;
+        }
+
+        ConsolePrinter.enterLiveCellCoordinates();
+
+        CellGrid cellGrid = new CellGrid(value[0], value[1]);
+
+        try {
+            ArrayList<Coordinates> coords = UserInputManager.turnUserInputIntoCoordinates();
+            cellGrid.setCellToAlive(coords);
+        }
+        catch (IncorrectInputException message){
+            System.err.println(message.getMessage());
+            return;
+        }
+        String[][] newCellGrid;
 
 
-        ConsolePrinter.printGridWithFormatting(newCellGrid);
+
+        for(int turns = 0; turns < 2; turns++){
+//          print
+            newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
+            cellGrid.updateGrid();
+            ConsolePrinter.printGridWithFormatting(newCellGrid);
+            System.out.println("\n");
+//          prompt for input / wait
+            Thread.sleep(1000);
+//          act on input
+
+        }
+
 
 
     }

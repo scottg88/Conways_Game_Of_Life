@@ -2,21 +2,9 @@ import java.util.ArrayList;
 
 public class CellGrid {
 
-//    should cell grid just be an grid, or should it be initialised with live and dead cells?
-
-/*
-TODO: 1. go back to constructor taking two separate values for row and col
-2. work out how to pass the two separate values from the user input
- */
-
     private  Cell[][] cellGrid;
-    private int rows;
-    private int columns;
-
 
     public CellGrid(int rows, int columns){
-        this.rows = rows;
-        this.columns = columns;
         this.cellGrid = new Cell[rows][columns];
         initialiseCellGrid();
     }
@@ -33,14 +21,14 @@ TODO: 1. go back to constructor taking two separate values for row and col
         return this.cellGrid[x][y].getIsAlive();
     }
 
-
-    public void setCellToAlive(int x, int y){
-        this.cellGrid[x][y].changeState();
+    public void setCellToAlive(ArrayList<Coordinates> coords){
+        for(int index = 0; index < coords.size(); index++){
+            Coordinates currentCoords = coords.get(index);
+            int xIndex = currentCoords.getX() - 1;
+            int yIndex = currentCoords.getY() - 1;
+            this.cellGrid[xIndex][yIndex].changeState();
+        }
     }
-
-//    public Cell[][] getCellGrid() {
-//        return cellGrid;
-//    }
 
     private void initialiseCellGrid(){
         for(int row = 0; row < this.cellGrid.length; row ++){
@@ -50,6 +38,43 @@ TODO: 1. go back to constructor taking two separate values for row and col
         }
     }
 
+    public void updateGrid() {
+        // loop over every cell
+        for(int cellRow = 0; cellRow < this.cellGrid.length; cellRow++){
+            for(int cellCol = 0; cellCol < this.cellGrid[cellRow].length; cellCol++){
+//                boolean cellState = getCellIsAlive(cellRow, cellCol);
+
+
+                checkCellToTheRight(cellCol, cellCol);
+
+                System.out.println(cellRow + ", " + cellCol +" \n");
+//                if(cellState){
+//                    System.out.println("Ah, ah, ah, ah stayin' alive, stayin' alive!");
+//                    cellGrid[cellRow][cellCol].changeState();
+//                }
+//                else {
+//                    System.out.println("Two things are certain in life: death and taxes.");
+//                    cellGrid[cellRow][cellCol].changeState();
+//                }
+//
+
+            }
+        }
+
+    }
+
+    private void checkCellToTheRight(int x, int y) {
+
+        for (int cellRow = x; cellRow < cellGrid.length-1; cellRow++) {
+            for (int cellCol = y; cellCol < cellGrid[cellRow].length-1; cellCol++) {
+                if(cellRow == cellGrid.length-1){
+                    
+                }
+                System.out.println("current cell: " + getCellIsAlive(cellRow, cellCol));
+                System.out.println("cell to the right: " + getCellIsAlive(cellRow + 1, cellCol + 1));
+            }
+        }
+    }
 
 
 

@@ -1,23 +1,27 @@
-//import org.junit.Test;
-//
-//import static org.junit.Assert.*;
-//
-//public class CellGridTranslatorTest {
-//
-//    @Test
-//    public void whenGivenA2dArrayOfCellsReturnsA2dArrayOfStrings(){
-//        CellGrid cellGrid = new CellGrid();
-//
-//        String[][] expectedOutput = {{"x", "x", "x"}, {"x", "x", "x"}, {"x", "x", "x"}};
-//        String[][] actualOutput = CellGridTranslator.getCellGridAsStringArray(cellGrid);
-//
-//        assertArrayEquals(expectedOutput, actualOutput);
-//
-//    }
-//
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class CellGridTranslatorTest {
+
+    /*
+    these tests need fixing so i'm not testing string arrays
+     */
+
+    @Test
+    public void whenGivenA2dArrayOfCellsReturnsA2dArrayOfStrings(){
+        CellGrid cellGrid = new CellGrid(3,3);
+
+        String[][] expectedOutput = {{"x", "x", "x"}, {"x", "x", "x"}, {"x", "x", "x"}};
+        String[][] actualOutput = CellGridTranslator.getCellGridAsStringArray(cellGrid);
+
+        assertArrayEquals(expectedOutput, actualOutput);
+
+    }
+
 //    @Test
 //    public void whenACellsIsAliveStringIsSetToAnO(){
-//        CellGrid cellGrid = new CellGrid();
+//        CellGrid cellGrid = new CellGrid(3,3);
 //
 //        cellGrid.setCellToAlive(1,1);
 //
@@ -28,10 +32,10 @@
 //
 //
 //    }
-//
+
 //    @Test
 //    public void whenACellIsDeadStringIsSetToAnX(){
-//        CellGrid cellGrid = new CellGrid();
+//        CellGrid cellGrid = new CellGrid(3,3);
 //
 //        cellGrid.setCellToAlive(0,0);
 //        cellGrid.setCellToAlive(0,1);
@@ -48,5 +52,5 @@
 //        assertArrayEquals(expectedOutput, actualOutput);
 //
 //    }
-//
-//}
+
+}
