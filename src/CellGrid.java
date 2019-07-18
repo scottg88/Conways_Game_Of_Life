@@ -40,43 +40,22 @@ public class CellGrid {
 
     public void updateGrid() {
         // loop over every cell
-        for(int cellRow = 0; cellRow < this.cellGrid.length; cellRow++){
-            for(int cellCol = 0; cellCol < this.cellGrid[cellRow].length; cellCol++){
-//                boolean cellState = getCellIsAlive(cellRow, cellCol);
 
+            for(int cellRow = 0; cellRow < this.cellGrid.length; cellRow++){
+                for(int cellCol = 0; cellCol < this.cellGrid[cellRow].length; cellCol++){
 
-                checkCellToTheRight(cellCol, cellCol);
-
-                System.out.println(cellRow + ", " + cellCol +" \n");
-//                if(cellState){
-//                    System.out.println("Ah, ah, ah, ah stayin' alive, stayin' alive!");
-//                    cellGrid[cellRow][cellCol].changeState();
-//                }
-//                else {
-//                    System.out.println("Two things are certain in life: death and taxes.");
-//                    cellGrid[cellRow][cellCol].changeState();
-//                }
+                    if (cellCol < cellGrid[cellRow].length-1){
+                        System.out.println(getCellIsAlive(cellRow, cellCol+1));
+                    }
+                    if (cellCol == cellGrid[cellRow].length-1){
+                        System.out.println(getCellIsAlive(cellRow,0));
+                    }
 //
 
-            }
-        }
-
-    }
-
-    private void checkCellToTheRight(int x, int y) {
-
-        for (int cellRow = x; cellRow < cellGrid.length-1; cellRow++) {
-            for (int cellCol = y; cellCol < cellGrid[cellRow].length-1; cellCol++) {
-                if(cellRow == cellGrid.length-1){
-                    
                 }
-                System.out.println("current cell: " + getCellIsAlive(cellRow, cellCol));
-                System.out.println("cell to the right: " + getCellIsAlive(cellRow + 1, cellCol + 1));
-            }
         }
+
     }
 
+        }
 
-
-
-}
