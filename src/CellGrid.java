@@ -48,6 +48,8 @@ public class CellGrid {
 //                   checkCellToTheRight(cellRow, cellCol);
 //                   checkCellAbove(cellRow, cellCol);
 //                    checkCellBelow(cellRow, cellCol);
+//                    System.out.println(cellRow + "," + cellCol);
+                    checkCellTopRightCorner(cellRow, cellCol);
 
                 }
             }
@@ -60,6 +62,15 @@ public class CellGrid {
         }
         if (cellCol == cellGrid[cellRow].length-1){
             System.out.println(getCellIsAlive(cellRow,0));
+        }
+    }
+
+    private void checkCellBelow(int cellRow, int cellCol){
+        if(cellRow < cellGrid[cellRow].length-1){
+            System.out.println(getCellIsAlive(cellRow+1, cellCol));
+        }
+        if(cellRow == cellGrid[cellRow].length-1){
+            System.out.println(getCellIsAlive(0, cellCol));
         }
     }
 
@@ -81,13 +92,32 @@ public class CellGrid {
         }
     }
 
-    private void checkCellBelow(int cellRow, int cellCol){
-        if(cellRow < cellGrid[cellRow].length-1){
-            System.out.println(getCellIsAlive(cellRow+1, cellCol));
+    private void checkCellTopRightCorner(int cellRow, int cellCol){
+        if((cellRow > 0) && (cellCol < cellGrid[cellRow].length-1)){
+            System.out.println(getCellIsAlive(cellRow-1, cellCol +1));
         }
-        if(cellRow == cellGrid[cellRow].length-1){
-            System.out.println(getCellIsAlive(0, cellCol));
+//        top LH corner and top edge
+        if((cellRow == 0) && (cellCol < cellGrid[cellRow].length-1)){
+            System.out.println(getCellIsAlive(cellGrid.length-1, cellCol+1));
         }
+//        top RH corner
+        if((cellRow == 0) && (cellCol == cellGrid[cellRow].length-1)){
+            System.out.println(getCellIsAlive(cellGrid.length-1, 0));
+        }
+//        RH edge and bottom RH corner
+        if((cellRow > 0) && (cellCol == cellGrid[cellRow].length-1)){
+            System.out.println(getCellIsAlive(cellRow -1, 0));
+        }
+
+    }
+    private void checkCellTopLeftCorner(int cellRow, int cellCol){
+
+    }
+    private void checkCellBottomRightCorner(int cellRow, int cellCol){
+
+    }
+    private void checkCellBottomLeftCorner(int cellRow, int cellCol){
+
     }
 
 }
