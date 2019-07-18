@@ -44,8 +44,10 @@ public class CellGrid {
             for(int cellRow = 0; cellRow < this.cellGrid.length; cellRow++){
                 for(int cellCol = 0; cellCol < this.cellGrid[cellRow].length; cellCol++){
 
-                   checkCellToTheRight(cellRow, cellCol);
-                    checkCellToTheLeft(cellRow, cellCol);
+//                   checkCellToTheLeft(cellRow, cellCol);
+//                   checkCellToTheRight(cellRow, cellCol);
+//                   checkCellAbove(cellRow, cellCol);
+//                    checkCellBelow(cellRow, cellCol);
 
                 }
             }
@@ -67,6 +69,24 @@ public class CellGrid {
         }
         if (cellCol == 0){
             System.out.println(getCellIsAlive(cellRow,cellGrid[cellRow].length-1));
+        }
+    }
+
+    private void checkCellAbove(int cellRow, int cellCol){
+        if(cellRow > 0){
+            System.out.println(getCellIsAlive(cellRow-1, cellCol));
+        }
+        if(cellRow == 0){
+            System.out.println(getCellIsAlive(cellGrid.length-1, cellCol));
+        }
+    }
+
+    private void checkCellBelow(int cellRow, int cellCol){
+        if(cellRow < cellGrid[cellRow].length-1){
+            System.out.println(getCellIsAlive(cellRow+1, cellCol));
+        }
+        if(cellRow == cellGrid[cellRow].length-1){
+            System.out.println(getCellIsAlive(0, cellCol));
         }
     }
 
