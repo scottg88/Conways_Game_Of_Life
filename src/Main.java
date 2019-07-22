@@ -33,7 +33,7 @@ public class Main {
 
 
 
-        for(int turns = 0; turns < 2; turns++){
+        for(int turns = 0; turns < 1; turns++){
 //          print
             newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
             cellGrid.updateGrid();
