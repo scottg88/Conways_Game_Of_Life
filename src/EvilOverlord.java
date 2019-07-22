@@ -30,9 +30,6 @@ public class EvilOverlord {
     }
 
     private boolean getStateOfNeighbourToTheTopRightCorner(CellGrid cellGrid, int cellRow, int cellCol){
-        if((cellRow > 0) && (cellCol < cellGrid.getNumberOfColumns())){
-            return cellGrid.getCellIsAlive(cellRow-1, cellCol +1);
-        }
 //        top LH corner and top edge
         if((cellRow == 0) && (cellCol < cellGrid.getNumberOfColumns())){
             return cellGrid.getCellIsAlive(cellGrid.getNumberOfRows(), cellCol+1);
@@ -45,6 +42,7 @@ public class EvilOverlord {
         if((cellRow > 0) && (cellCol == cellGrid.getNumberOfColumns())){
             return cellGrid.getCellIsAlive(cellRow -1, 0);
         }
+        return cellGrid.getCellIsAlive(cellRow-1, cellCol +1);
     }
 
     private boolean getStateOfNeighbourToTheRight(CellGrid cellGrid, int cellRow, int cellCol){
@@ -58,9 +56,6 @@ public class EvilOverlord {
     }
 
     private boolean getStateOfNeighbourToTheBottomRightCorner(CellGrid cellGrid, int cellRow, int cellCol){
-        if((cellRow < cellGrid.getNumberOfRows()) && (cellCol < cellGrid.getNumberOfColumns())){
-            return cellGrid.getCellIsAlive(cellRow +1, cellCol +1);
-        }
 //        top RH corner and RH edge
         if((cellRow < cellGrid.getNumberOfRows()) && (cellCol == cellGrid.getNumberOfColumns())){
             return cellGrid.getCellIsAlive(cellRow + 1, 0);
@@ -73,6 +68,7 @@ public class EvilOverlord {
         if((cellRow == cellGrid.getNumberOfRows()) && (cellCol < cellGrid.getNumberOfColumns())){
             return cellGrid.getCellIsAlive(0, cellCol + 1);
         }
+        return cellGrid.getCellIsAlive(cellRow +1, cellCol +1);
     }
 
     private boolean getStateOfNeighbourBelow(CellGrid cellGrid, int cellRow, int cellCol){
@@ -83,9 +79,6 @@ public class EvilOverlord {
     }
 
     private boolean getStateOfNeighbourToTheBottomLeftCorner(CellGrid cellGrid, int cellRow, int cellCol){
-        if((cellRow > cellGrid.getNumberOfRows()) && (cellCol > 0)){
-            return cellGrid.getCellIsAlive(cellRow + 1, cellCol -1);
-        }
         if((cellRow < cellGrid.getNumberOfRows()) && (cellCol == 0)){
             return cellGrid.getCellIsAlive(cellRow + 1, cellGrid.getNumberOfColumns());
         }
@@ -95,6 +88,7 @@ public class EvilOverlord {
         if((cellRow == cellGrid.getNumberOfRows()) && (cellCol > 0)){
             return cellGrid.getCellIsAlive(0, cellCol -1);
         }
+        return cellGrid.getCellIsAlive(cellRow + 1, cellCol -1);
     }
 
     private boolean getStateOfNeighbourToTheLeft(CellGrid cellGrid, int cellRow, int cellCol){
@@ -105,9 +99,6 @@ public class EvilOverlord {
     }
 
     private boolean getStateOfNeighbourToTheTopLeftCorner(CellGrid cellGrid, int cellRow, int cellCol) {
-        if ((cellRow > 0) && (cellCol > 0)) {
-            return cellGrid.getCellIsAlive(cellRow - 1, cellCol - 1);
-        }
         //        top RH corner and top edge
         if ((cellRow == 0) && (cellCol > 0)) {
             return cellGrid.getCellIsAlive(cellGrid.getNumberOfRows(), cellCol - 1);
@@ -120,6 +111,7 @@ public class EvilOverlord {
         if ((cellRow > 0) && (cellCol == 0)) {
             return cellGrid.getCellIsAlive(cellRow - 1, cellGrid.getNumberOfColumns());
         }
+        return cellGrid.getCellIsAlive(cellRow - 1, cellCol - 1);
     }
 
 
