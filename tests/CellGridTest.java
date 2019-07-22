@@ -1,7 +1,5 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class CellGridTest {
@@ -12,7 +10,7 @@ public class CellGridTest {
         CellGrid cellGrid = new CellGrid(6,6);
 
         int expectedRows = 6;
-        int actualRows = cellGrid.getRows();
+        int actualRows = cellGrid.getNumberOfRows();
 
         assertEquals(expectedRows, actualRows);
     }
@@ -23,7 +21,7 @@ public class CellGridTest {
         CellGrid cellGrid = new CellGrid(6,6);
 
         int expectedColumns = 6;
-        int actualColumns = cellGrid.getColumns();
+        int actualColumns = cellGrid.getNumberOfColumns();
 
         assertEquals(expectedColumns, actualColumns);
     }

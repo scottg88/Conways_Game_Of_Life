@@ -9,11 +9,12 @@ public class CellGrid {
         initialiseCellGrid();
     }
 
-    public int getRows(){
+    public int getNumberOfRows(){
+
         return this.cellGrid.length;
     }
 
-    public int getColumns(){
+    public int getNumberOfColumns(){
         return this.cellGrid[0].length;
     }
 
@@ -38,103 +39,9 @@ public class CellGrid {
         }
     }
 
-    public void updateGrid() {
-        // loop over every cell
 
-            for(int cellRow = 0; cellRow < this.cellGrid.length; cellRow++){
-                for(int cellCol = 0; cellCol < this.cellGrid[cellRow].length; cellCol++){
 
-//                   checkCellToTheLeft(cellRow, cellCol);
-//                   checkCellToTheRight(cellRow, cellCol);
-//                   checkCellAbove(cellRow, cellCol);
-//                    checkCellBelow(cellRow, cellCol);
-//                    System.out.println(cellRow + "," + cellCol);
-//                    checkCellTopRightCorner(cellRow, cellCol);
-                    checkCellTopLeftCorner(cellRow, cellCol);
 
-                }
-            }
-
-    }
-
-    private void checkCellToTheRight(int cellRow, int cellCol){
-        if (cellCol < cellGrid[cellRow].length-1){
-            System.out.println(getCellIsAlive(cellRow, cellCol+1));
-        }
-        if (cellCol == cellGrid[cellRow].length-1){
-            System.out.println(getCellIsAlive(cellRow,0));
-        }
-    }
-
-    private void checkCellBelow(int cellRow, int cellCol){
-        if(cellRow < cellGrid[cellRow].length-1){
-            System.out.println(getCellIsAlive(cellRow+1, cellCol));
-        }
-        if(cellRow == cellGrid[cellRow].length-1){
-            System.out.println(getCellIsAlive(0, cellCol));
-        }
-    }
-
-    private void checkCellToTheLeft(int cellRow, int cellCol){
-        if (cellCol > 0){
-            System.out.println(getCellIsAlive(cellRow, cellCol-1));
-        }
-        if (cellCol == 0){
-            System.out.println(getCellIsAlive(cellRow,cellGrid[cellRow].length-1));
-        }
-    }
-
-    private void checkCellAbove(int cellRow, int cellCol){
-        if(cellRow > 0){
-            System.out.println(getCellIsAlive(cellRow-1, cellCol));
-        }
-        if(cellRow == 0){
-            System.out.println(getCellIsAlive(cellGrid.length-1, cellCol));
-        }
-    }
-
-    private void checkCellTopRightCorner(int cellRow, int cellCol){
-        if((cellRow > 0) && (cellCol < cellGrid[cellRow].length-1)){
-            System.out.println(getCellIsAlive(cellRow-1, cellCol +1));
-        }
-//        top LH corner and top edge
-        if((cellRow == 0) && (cellCol < cellGrid[cellRow].length-1)){
-            System.out.println(getCellIsAlive(cellGrid.length-1, cellCol+1));
-        }
-//        top RH corner
-        if((cellRow == 0) && (cellCol == cellGrid[cellRow].length-1)){
-            System.out.println(getCellIsAlive(cellGrid.length-1, 0));
-        }
-//        RH edge and bottom RH corner
-        if((cellRow > 0) && (cellCol == cellGrid[cellRow].length-1)){
-            System.out.println(getCellIsAlive(cellRow -1, 0));
-        }
-
-    }
-    private void checkCellTopLeftCorner(int cellRow, int cellCol){
-        if((cellRow > 0) && (cellCol > 0)){
-            System.out.println(getCellIsAlive(cellRow-1, cellCol -1));
-        }
-        //        top RH corner and top edge
-        if((cellRow == 0) && (cellCol > 0)){
-            System.out.println(getCellIsAlive(cellGrid.length-1, cellCol-1));
-        }
-        //        top LH corner
-        if((cellRow == 0) && (cellCol == 0)){
-            System.out.println(getCellIsAlive(cellGrid.length-1, cellGrid[cellRow].length-1));
-        }
-        //        LH edge and bottom LH corner
-        if((cellRow > 0) && (cellCol == 0)){
-            System.out.println(getCellIsAlive(cellRow -1, cellGrid[cellRow].length-1));
-        }
-
-    }
-    private void checkCellBottomRightCorner(int cellRow, int cellCol){
-
-    }
-    private void checkCellBottomLeftCorner(int cellRow, int cellCol){
-
-    }
 
 }
 
