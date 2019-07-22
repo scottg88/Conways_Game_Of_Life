@@ -49,7 +49,8 @@ public class CellGrid {
 //                   checkCellAbove(cellRow, cellCol);
 //                    checkCellBelow(cellRow, cellCol);
 //                    System.out.println(cellRow + "," + cellCol);
-                    checkCellTopRightCorner(cellRow, cellCol);
+//                    checkCellTopRightCorner(cellRow, cellCol);
+                    checkCellTopLeftCorner(cellRow, cellCol);
 
                 }
             }
@@ -111,6 +112,21 @@ public class CellGrid {
 
     }
     private void checkCellTopLeftCorner(int cellRow, int cellCol){
+        if((cellRow > 0) && (cellCol > 0)){
+            System.out.println(getCellIsAlive(cellRow-1, cellCol -1));
+        }
+        //        top RH corner and top edge
+        if((cellRow == 0) && (cellCol > 0)){
+            System.out.println(getCellIsAlive(cellGrid.length-1, cellCol-1));
+        }
+        //        top LH corner
+        if((cellRow == 0) && (cellCol == 0)){
+            System.out.println(getCellIsAlive(cellGrid.length-1, cellGrid[cellRow].length-1));
+        }
+        //        LH edge and bottom LH corner
+        if((cellRow > 0) && (cellCol == 0)){
+            System.out.println(getCellIsAlive(cellRow -1, cellGrid[cellRow].length-1));
+        }
 
     }
     private void checkCellBottomRightCorner(int cellRow, int cellCol){
