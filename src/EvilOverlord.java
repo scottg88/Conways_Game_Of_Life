@@ -38,11 +38,11 @@ public class EvilOverlord {
             return cellGrid.getCellIsAlive(cellGrid.getNumberOfRows(), cellCol+1);
         }
 //        top RH corner
-        if((cellRow == 0) && (cellCol == cellGrid.getNumberOfColumns()){
+        if((cellRow == 0) && (cellCol == cellGrid.getNumberOfColumns())){
             return cellGrid.getCellIsAlive(cellGrid.getNumberOfRows(), 0);
         }
 //        RH edge and bottom RH corner
-        if((cellRow > 0) && (cellCol == cellGrid.getNumberOfColumns()){
+        if((cellRow > 0) && (cellCol == cellGrid.getNumberOfColumns())){
             return cellGrid.getCellIsAlive(cellRow -1, 0);
         }
     }
@@ -62,7 +62,7 @@ public class EvilOverlord {
             return cellGrid.getCellIsAlive(cellRow +1, cellCol +1);
         }
 //        top RH corner and RH edge
-        if((cellRow < cellGrid.getNumberOfRows()) && (cellCol == cellGrid.getNumberOfColumns()){
+        if((cellRow < cellGrid.getNumberOfRows()) && (cellCol == cellGrid.getNumberOfColumns())){
             return cellGrid.getCellIsAlive(cellRow + 1, 0);
         }
 //        bottom RH corner
@@ -83,7 +83,18 @@ public class EvilOverlord {
     }
 
     private boolean getStateOfNeighbourToTheBottomLeftCorner(CellGrid cellGrid, int cellRow, int cellCol){
-        return 
+        if((cellRow > cellGrid.getNumberOfRows()) && (cellCol > 0)){
+            return cellGrid.getCellIsAlive(cellRow + 1, cellCol -1);
+        }
+        if((cellRow < cellGrid.getNumberOfRows()) && (cellCol == 0)){
+            return cellGrid.getCellIsAlive(cellRow + 1, cellGrid.getNumberOfColumns());
+        }
+        if((cellRow == cellGrid.getNumberOfRows()) && (cellCol == 0)){
+            return cellGrid.getCellIsAlive(0, cellGrid.getNumberOfColumns());
+        }
+        if((cellRow == cellGrid.getNumberOfRows()) && (cellCol > 0)){
+            return cellGrid.getCellIsAlive(0, cellCol -1);
+        }
     }
 
     private boolean getStateOfNeighbourToTheLeft(CellGrid cellGrid, int cellRow, int cellCol){
