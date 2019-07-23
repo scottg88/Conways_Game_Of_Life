@@ -40,7 +40,7 @@ public class CellGrid {
     }
 
     public void keepCellAlive(int x, int y){
-
+        this.cellGrid[x][y].keepAlive();
     }
 
     private void initialiseCellGrid(){

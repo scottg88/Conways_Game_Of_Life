@@ -2,66 +2,43 @@ import java.util.ArrayList;
 
 public class EvilOverlord {
 
-    private ArrayList<Boolean> neighbouringCellStates = new ArrayList<>();
-
 
     public void updateBoard(CellGrid cellGrid) {
-        // loop over every cell
-
-        for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++){
-            for(int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++){
-
-                boolean currentState = cellGrid.getCellIsAlive(cellRow, cellCol);
-               ArrayList<Boolean> neighbouringCells = getNeighbouringCellStates(cellGrid);
-               int totalLiveNeighbours = getTotalLiveNeighbours(neighbouringCells);
-
-
-                decideCellFate(cellGrid, currentState, totalLiveNeighbours, cellRow, cellCol);
-
-            }
-        }
-
-    }
-
-    private void decideCellFate(CellGrid cellGrid, boolean currentCellState, int totalLiveNeighbours, int x, int y){
-            if(currentCellState && totalLiveNeighbours < 2){
-                cellGrid.killCell(x, y);
-            }
-            if(currentCellState && totalLiveNeighbours >3 ){
-                cellGrid.killCell(x, y);
-            }
-            if(currentCellState && totalLiveNeighbours == 2 || currentCellState && totalLiveNeighbours ==3){
-                cellGrid.getCellIsAlive(x,y);
-            }
-            if (!currentCellState && totalLiveNeighbours == 3){
-                cellGrid.resurrectCell(x,y);
-            }
-    }
-
-    private int getTotalLiveNeighbours(ArrayList<Boolean> neighbouringCellStates){
-        int totalLiveCells = 0;
-        for(Boolean alive : neighbouringCellStates){
-            if(alive){
-              totalLiveCells += 1;
-            }
-        }
-        return totalLiveCells;
-    }
-
-    private ArrayList<Boolean> getNeighbouringCellStates(CellGrid cellGrid){
+        int totalLiveNeighbours = 0;
         for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
             for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
-                neighbouringCellStates.add(getStateOfNeighbourAbove(cellGrid, cellRow, cellCol));
-                neighbouringCellStates.add(getStateOfNeighbourToTheTopRightCorner(cellGrid, cellRow, cellCol));
-                neighbouringCellStates.add(getStateOfNeighbourToTheRight(cellGrid, cellRow, cellCol));
-                neighbouringCellStates.add(getStateOfNeighbourToTheBottomRightCorner(cellGrid, cellRow, cellCol));
-                neighbouringCellStates.add(getStateOfNeighbourBelow(cellGrid, cellRow, cellCol));
-                neighbouringCellStates.add(getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol));
-                neighbouringCellStates.add(getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol));
-                neighbouringCellStates.add(getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol));
+               boolean above = getStateOfNeighbourAbove(cellGrid, cellRow, cellCol);
+               boolean topRightCorner = getStateOfNeighbourToTheTopRightCorner(cellGrid, cellRow, cellCol);
+               boolean right = getStateOfNeighbourToTheRight(cellGrid, cellRow, cellCol);
+               boolean bottomRightCorner = getStateOfNeighbourToTheBottomRightCorner(cellGrid, cellRow, cellCol);
+               boolean below = getStateOfNeighbourBelow(cellGrid, cellRow, cellCol);
+               boolean bottomLeftCorner = getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol);
+               boolean left = getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol);
+               boolean topLeftCorner = getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol);
+
+               if(above || topRightCorner || right || bottomRightCorner || below || bottomLeftCorner || left || topLeftCorner ){
+                   totalLiveNeighbours += 1;
+               }
+
             }
         }
-        return neighbouringCellStates;
+        decideCellFate(cellGrid, totalLiveNeighbours);
+    }
+
+    private void decideCellFate(CellGrid cellGrid, int totalLiveNeighbours){
+        for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
+            for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
+                if ((cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours < 2) || (cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours > 3)) {
+                    cellGrid.killCell(cellRow, cellCol);
+                }
+                if (!cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours == 3) {
+                    cellGrid.resurrectCell(cellRow, cellCol);
+                }
+                if((cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours == 2) || (cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours ==3) ) {
+                    cellGrid.getCellIsAlive(cellRow, cellCol);
+                }
+            }
+        }
     }
 
     private boolean getStateOfNeighbourAbove(CellGrid cellGrid, int cellRow, int cellCol){

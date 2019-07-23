@@ -25,6 +25,10 @@ public class Cell {
 //        this.isAlive = !(this.isAlive);
     }
 
+    public void keepAlive(){
+        this.isAlive = true;
+    }
+
 
 
 

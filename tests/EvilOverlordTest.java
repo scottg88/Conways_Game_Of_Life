@@ -42,7 +42,7 @@ public class EvilOverlordTest {
     @Test
     public void whenCellIsAliveAndHasTwoOrThreeLiveNeighboursCellLives(){
         EvilOverlord evilOverlord = new EvilOverlord();
-        CellGrid cellGrid = new CellGrid(4, 4);
+        CellGrid cellGrid = new CellGrid(3, 3);
 
         ArrayList<Coordinates> liveCells = new ArrayList<>();
         liveCells.add(new Coordinates(1,2));
