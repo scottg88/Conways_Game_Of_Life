@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
+        EvilOverlord evilOverlord = new EvilOverlord();
 
         ConsolePrinter.enterDimensionsInstruction();
 
@@ -33,10 +34,10 @@ public class Main {
 
 
 
-        for(int turns = 0; turns < 1; turns++){
+        for(int turns = 0; turns < 5; turns++){
 //          print
             newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
-            cellGrid.updateGrid();
+            evilOverlord.updateBoard(cellGrid);
             ConsolePrinter.printGridWithFormatting(newCellGrid);
             System.out.println("\n");
 //          prompt for input / wait

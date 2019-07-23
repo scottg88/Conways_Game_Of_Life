@@ -31,6 +31,18 @@ public class CellGrid {
         }
     }
 
+    public void killCell(int x, int y){
+        this.cellGrid[x][y].changeState();
+    }
+
+    public void resurrectCell(int x, int y){
+        this.cellGrid[x][y].changeState();
+    }
+
+    public void keepCellAlive(int x, int y){
+
+    }
+
     private void initialiseCellGrid(){
         for(int row = 0; row < this.cellGrid.length; row ++){
             for(int column = 0; column < this.cellGrid[row].length; column++){
