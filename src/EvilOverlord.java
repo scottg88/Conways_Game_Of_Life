@@ -4,82 +4,41 @@ public class EvilOverlord {
 
 
     public void decideCellFate(CellGrid cellGrid){
-        ArrayList<Integer> totalLiveNeighbours = determineNumberOfLiveNeighbours(cellGrid);
 
         for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
             for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
                 boolean cellIsAlive = cellGrid.getCellIsAlive(cellRow, cellCol);
-                if ((cellIsAlive && totalLiveNeighbours.get(cellCol) < 2) ||
-                        (cellIsAlive && totalLiveNeighbours.get(cellCol) > 3)) {
+                int numberOfLiveNeighbours = determineNumberOfLiveNeighbours(cellGrid, cellRow, cellCol);
+                if ((cellIsAlive && numberOfLiveNeighbours < 2) || (cellIsAlive && numberOfLiveNeighbours > 3)) {
                     cellGrid.killCell(cellRow, cellCol);
+                    continue;
                 }
-                if (!cellIsAlive && totalLiveNeighbours.get(cellCol) == 3) {
+                if (!cellIsAlive && numberOfLiveNeighbours == 3) {
                     cellGrid.resurrectCell(cellRow, cellCol);
+                    continue;
                 }
-                if((cellIsAlive && totalLiveNeighbours.get(cellCol) == 2) ||
-                        (cellIsAlive && totalLiveNeighbours.get(cellCol) ==3) ) {
+                if((cellIsAlive && numberOfLiveNeighbours == 2) || (cellIsAlive && numberOfLiveNeighbours ==3) ) {
                     cellGrid.keepCellAlive(cellRow, cellCol);
                 }
             }
         }
     }
 
-    private ArrayList<Integer> determineNumberOfLiveNeighbours(CellGrid cellGrid) {
-        ArrayList<Integer> totalLiveNeighbours = new ArrayList<>();
-        int runningTotal = 0;
-        for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
-            for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
-                if(getStateOfNeighbourAbove(cellGrid, cellRow, cellCol)){
-                    runningTotal += 1;
-                }
-                else {
-                    runningTotal = 0;
-                }
-                if(getStateOfNeighbourToTheTopRightCorner(cellGrid, cellRow, cellCol)){
-                    runningTotal += 1;
-                }
-                else {
-                    runningTotal = 0;
-                }
-                if(getStateOfNeighbourToTheRight(cellGrid, cellRow, cellCol)){
-                    runningTotal += 1;
-                }
-                else {
-                    runningTotal = 0;
-                }
-                if(getStateOfNeighbourToTheBottomRightCorner(cellGrid, cellRow, cellCol)){
-                    runningTotal += 1;
-                }
-                else {
-                    runningTotal = 0;
-                }
-                if(getStateOfNeighbourBelow(cellGrid, cellRow, cellCol)){
-                    runningTotal += 1;
-                }
-                else {
-                    runningTotal = 0;
-                }
-                if(getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol)){
-                    runningTotal += 1;
-                }
-                else {
-                    runningTotal = 0;
-                }
-                if(getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol)){
-                    runningTotal += 1;
-                }
-                else {
-                    runningTotal = 0;
-                }
-                if(getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol)){
-                    runningTotal += 1;
-                }
-                else {
-                    runningTotal = 0;
-                }
+    private int determineNumberOfLiveNeighbours(CellGrid cellGrid, int cellRow, int cellCol) {
+        ArrayList<Boolean> neighbourStates = new ArrayList<>();
+        int totalLiveNeighbours = 0;
+                neighbourStates.add(getStateOfNeighbourAbove(cellGrid, cellRow, cellCol));
+                neighbourStates.add(getStateOfNeighbourToTheTopRightCorner(cellGrid, cellRow, cellCol));
+                neighbourStates.add(getStateOfNeighbourToTheRight(cellGrid, cellRow, cellCol));
+                neighbourStates.add(getStateOfNeighbourToTheBottomRightCorner(cellGrid, cellRow, cellCol));
+                neighbourStates.add(getStateOfNeighbourBelow(cellGrid, cellRow, cellCol));
+                neighbourStates.add(getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol));
+                neighbourStates.add(getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol));
+                neighbourStates.add(getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol));
 
-                totalLiveNeighbours.add(runningTotal);
-
+        for(Boolean state : neighbourStates){
+            if(state){
+                totalLiveNeighbours += 1;
             }
         }
         return totalLiveNeighbours;

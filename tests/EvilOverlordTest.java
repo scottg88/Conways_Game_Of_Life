@@ -53,7 +53,7 @@ public class EvilOverlordTest {
 
         evilOverlord.decideCellFate(cellGrid);
 
-        assertTrue(cellGrid.getCellIsAlive(2,2));
+        assertTrue(cellGrid.getCellIsAlive(1,1));
     }
 
     @Test
@@ -62,13 +62,13 @@ public class EvilOverlordTest {
         CellGrid cellGrid = new CellGrid(3, 3);
 
         ArrayList<Coordinates> liveCells = new ArrayList<>();
-        liveCells.add(new Coordinates(1,2));
-        liveCells.add(new Coordinates(2,1));
-        liveCells.add(new Coordinates(3,2));
+        liveCells.add(new Coordinates(1,1));
+        liveCells.add(new Coordinates(2,2));
+        liveCells.add(new Coordinates(1,3));
         cellGrid.setCellToAlive(liveCells);
 
         evilOverlord.decideCellFate(cellGrid);
-        assertTrue(cellGrid.getCellIsAlive(2,2));
+        assertTrue(cellGrid.getCellIsAlive(0,2));
 
     }
 
