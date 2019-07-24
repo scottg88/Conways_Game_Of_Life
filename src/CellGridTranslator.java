@@ -1,5 +1,9 @@
 public class CellGridTranslator {
 
+    public static final String ANSI_BROWN = "\033[1;33m";
+    public static final String ANSI_GREEN = "\033[1;92m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
 
     public static String[][] getCellGridAsStringArray(CellGrid cellGrid){
         String[][] stringCellGrid = new String[cellGrid.getNumberOfRows()][cellGrid.getNumberOfColumns()];
@@ -7,10 +11,10 @@ public class CellGridTranslator {
         for(int row = 0; row < cellGrid.getNumberOfRows(); row++){
             for(int column = 0; column < cellGrid.getNumberOfColumns(); column++){
                 if(cellGrid.getCellIsAlive(row, column)){
-                    stringCellGrid[row][column] = "o";
+                    stringCellGrid[row][column] = ANSI_GREEN + "o" + ANSI_RESET;
                 }
                 else{
-                    stringCellGrid[row][column] = "x";
+                    stringCellGrid[row][column] = ANSI_BROWN + "x" + ANSI_RESET;
                 }
             }
         }

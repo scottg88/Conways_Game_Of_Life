@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class EvilOverlord {
 
 
-    public void updateBoard(CellGrid cellGrid) {
+    public void determineHowManyNeighboursAreAlive(CellGrid cellGrid) {
         int totalLiveNeighbours = 0;
         for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
             for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
@@ -15,10 +15,6 @@ public class EvilOverlord {
                boolean bottomLeftCorner = getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol);
                boolean left = getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol);
                boolean topLeftCorner = getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol);
-
-               if(above || topRightCorner || right || bottomRightCorner || below || bottomLeftCorner || left || topLeftCorner ){
-                   totalLiveNeighbours += 1;
-               }
 
             }
         }
