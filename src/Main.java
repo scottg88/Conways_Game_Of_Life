@@ -37,7 +37,7 @@ public class Main {
         for(int turns = 0; turns < 5; turns++){
 //          print
             newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
-            evilOverlord.determineHowManyNeighboursAreAlive(cellGrid);
+            evilOverlord.decideCellFate(cellGrid);
             ConsolePrinter.printGridWithFormatting(newCellGrid);
             System.out.println("\n");
 //          prompt for input / wait

@@ -3,38 +3,86 @@ import java.util.ArrayList;
 public class EvilOverlord {
 
 
-    public void determineHowManyNeighboursAreAlive(CellGrid cellGrid) {
-        int totalLiveNeighbours = 0;
+    public void decideCellFate(CellGrid cellGrid){
+        ArrayList<Integer> totalLiveNeighbours = determineNumberOfLiveNeighbours(cellGrid);
+
         for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
             for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
-               boolean above = getStateOfNeighbourAbove(cellGrid, cellRow, cellCol);
-               boolean topRightCorner = getStateOfNeighbourToTheTopRightCorner(cellGrid, cellRow, cellCol);
-               boolean right = getStateOfNeighbourToTheRight(cellGrid, cellRow, cellCol);
-               boolean bottomRightCorner = getStateOfNeighbourToTheBottomRightCorner(cellGrid, cellRow, cellCol);
-               boolean below = getStateOfNeighbourBelow(cellGrid, cellRow, cellCol);
-               boolean bottomLeftCorner = getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol);
-               boolean left = getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol);
-               boolean topLeftCorner = getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol);
-
-            }
-        }
-        decideCellFate(cellGrid, totalLiveNeighbours);
-    }
-
-    private void decideCellFate(CellGrid cellGrid, int totalLiveNeighbours){
-        for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
-            for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
-                if ((cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours < 2) || (cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours > 3)) {
+                boolean cellIsAlive = cellGrid.getCellIsAlive(cellRow, cellCol);
+                if ((cellIsAlive && totalLiveNeighbours.get(cellCol) < 2) ||
+                        (cellIsAlive && totalLiveNeighbours.get(cellCol) > 3)) {
                     cellGrid.killCell(cellRow, cellCol);
                 }
-                if (!cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours == 3) {
+                if (!cellIsAlive && totalLiveNeighbours.get(cellCol) == 3) {
                     cellGrid.resurrectCell(cellRow, cellCol);
                 }
-                if((cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours == 2) || (cellGrid.getCellIsAlive(cellRow, cellCol) && totalLiveNeighbours ==3) ) {
-                    cellGrid.getCellIsAlive(cellRow, cellCol);
+                if((cellIsAlive && totalLiveNeighbours.get(cellCol) == 2) ||
+                        (cellIsAlive && totalLiveNeighbours.get(cellCol) ==3) ) {
+                    cellGrid.keepCellAlive(cellRow, cellCol);
                 }
             }
         }
+    }
+
+    private ArrayList<Integer> determineNumberOfLiveNeighbours(CellGrid cellGrid) {
+        ArrayList<Integer> totalLiveNeighbours = new ArrayList<>();
+        int runningTotal = 0;
+        for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
+            for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
+                if(getStateOfNeighbourAbove(cellGrid, cellRow, cellCol)){
+                    runningTotal += 1;
+                }
+                else {
+                    runningTotal = 0;
+                }
+                if(getStateOfNeighbourToTheTopRightCorner(cellGrid, cellRow, cellCol)){
+                    runningTotal += 1;
+                }
+                else {
+                    runningTotal = 0;
+                }
+                if(getStateOfNeighbourToTheRight(cellGrid, cellRow, cellCol)){
+                    runningTotal += 1;
+                }
+                else {
+                    runningTotal = 0;
+                }
+                if(getStateOfNeighbourToTheBottomRightCorner(cellGrid, cellRow, cellCol)){
+                    runningTotal += 1;
+                }
+                else {
+                    runningTotal = 0;
+                }
+                if(getStateOfNeighbourBelow(cellGrid, cellRow, cellCol)){
+                    runningTotal += 1;
+                }
+                else {
+                    runningTotal = 0;
+                }
+                if(getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol)){
+                    runningTotal += 1;
+                }
+                else {
+                    runningTotal = 0;
+                }
+                if(getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol)){
+                    runningTotal += 1;
+                }
+                else {
+                    runningTotal = 0;
+                }
+                if(getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol)){
+                    runningTotal += 1;
+                }
+                else {
+                    runningTotal = 0;
+                }
+
+                totalLiveNeighbours.add(runningTotal);
+
+            }
+        }
+        return totalLiveNeighbours;
     }
 
     private boolean getStateOfNeighbourAbove(CellGrid cellGrid, int cellRow, int cellCol){
