@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
+        EvilOverlord evilOverlord = new EvilOverlord();
 
         ConsolePrinter.enterDimensionsInstruction();
 
@@ -10,7 +11,7 @@ public class Main {
         int[] value;
 
         try {
-            value = UserInputManager.turnUserInputIntoDimensions();
+            value = UserInputManager.getCellGridDimensions();
         }
         catch (IncorrectInputException message){
             System.err.println(message.getMessage());
@@ -22,7 +23,7 @@ public class Main {
         CellGrid cellGrid = new CellGrid(value[0], value[1]);
 
         try {
-            ArrayList<Coordinates> coords = UserInputManager.turnUserInputIntoCoordinates();
+            ArrayList<Coordinates> coords = UserInputManager.getCoordinatesOfLiveCells();
             cellGrid.setCellToAlive(coords);
         }
         catch (IncorrectInputException message){
@@ -33,10 +34,10 @@ public class Main {
 
 
 
-        for(int turns = 0; turns < 1; turns++){
+        for(int turns = 0; turns < 5; turns++){
 //          print
             newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
-            cellGrid.updateGrid();
+            evilOverlord.decideCellFate(cellGrid);
             ConsolePrinter.printGridWithFormatting(newCellGrid);
             System.out.println("\n");
 //          prompt for input / wait

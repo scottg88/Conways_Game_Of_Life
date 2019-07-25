@@ -3,12 +3,10 @@ public class Cell {
     private boolean isAlive;
 
     public Cell (){
-
         this.isAlive = false;
     }
 
     public boolean getIsAlive() {
-
         return isAlive;
     }
 
@@ -24,6 +22,11 @@ public class Cell {
 
 //        this.isAlive = !(this.isAlive);
     }
+
+    public void keepAlive(){
+        this.isAlive = true;
+    }
+
 
 
 

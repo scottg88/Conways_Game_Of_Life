@@ -3,7 +3,6 @@ import java.util.StringJoiner;
 
 public class ConsolePrinter {
 
-
     public static void printGridWithFormatting(String [][] grid){
         for(String[] row : grid){
             StringJoiner stringJoiner = new StringJoiner(" | ");
