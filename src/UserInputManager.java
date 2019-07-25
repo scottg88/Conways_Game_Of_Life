@@ -5,7 +5,7 @@ import java.util.*;
 public class UserInputManager {
     private static ArrayList<Coordinates> coordinates = new ArrayList<>();
 
-    public static int[] turnUserInputIntoDimensions() throws IncorrectInputException{
+    public static int[] getCellGridDimensions() throws IncorrectInputException{
 
         int[] inputValues = new int[2];
 
@@ -26,7 +26,7 @@ public class UserInputManager {
         return inputValues;
     }
 
-    public static ArrayList<Coordinates> turnUserInputIntoCoordinates() throws IncorrectInputException{
+    public static ArrayList<Coordinates> getCoordinatesOfLiveCells() throws IncorrectInputException{
 
         Scanner userInput = new Scanner(System.in);
         String[] splitIntoPairs = userInput.next().split("[| ]");

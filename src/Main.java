@@ -11,7 +11,7 @@ public class Main {
         int[] value;
 
         try {
-            value = UserInputManager.turnUserInputIntoDimensions();
+            value = UserInputManager.getCellGridDimensions();
         }
         catch (IncorrectInputException message){
             System.err.println(message.getMessage());
@@ -23,7 +23,7 @@ public class Main {
         CellGrid cellGrid = new CellGrid(value[0], value[1]);
 
         try {
-            ArrayList<Coordinates> coords = UserInputManager.turnUserInputIntoCoordinates();
+            ArrayList<Coordinates> coords = UserInputManager.getCoordinatesOfLiveCells();
             cellGrid.setCellToAlive(coords);
         }
         catch (IncorrectInputException message){

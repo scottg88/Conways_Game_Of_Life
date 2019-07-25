@@ -2,6 +2,10 @@ import java.util.ArrayList;
 
 public class EvilOverlord {
 
+    public void updateCells(){
+
+    }
+
 
     public void decideCellFate(CellGrid cellGrid){
 
