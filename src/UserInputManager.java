@@ -3,7 +3,7 @@ import java.util.*;
 
 
 public class UserInputManager {
-    private static ArrayList<Coordinates> coordinates = new ArrayList<>();
+    private static ArrayList<Coordinates> dimensions = new ArrayList<>();
 
     public static int[] getCellGridDimensions() throws IncorrectInputException{
 
@@ -35,7 +35,7 @@ public class UserInputManager {
                 for (String pair : splitIntoPairs) {
                     String[] splitPair = pair.split(",");
                     // validate pair?
-                    coordinates.add(new Coordinates((Integer.parseInt(splitPair[0])), (Integer.parseInt(splitPair[1]))));
+                    dimensions.add(new Coordinates((Integer.parseInt(splitPair[0])), (Integer.parseInt(splitPair[1]))));
                 }
             }
             catch(NumberFormatException e) {
@@ -45,7 +45,7 @@ public class UserInputManager {
         else {
             throw new IncorrectInputException("Input must be number,number|number,number: please try again");
         }
-        return coordinates;
+        return dimensions;
 
         }
     }
