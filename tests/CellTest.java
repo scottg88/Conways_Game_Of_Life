@@ -12,22 +12,13 @@ public class CellTest {
     }
 
     @Test
-    public void whenCellIsDeadChangeStateMakesCellAlive(){
+    public void whenCellIsDeadSetCellToAliveMakesCellAlive(){
         Cell cell = new Cell();
-        cell.changeState();
+        cell.setCellToAlive();
 
         assertTrue(cell.getIsAlive());
     }
 
-//    could be a false positive in this test, as the cell is dead in the first place
-    @Test
-    public void whenCellIsAliveChangeStateMakesCellDead(){
-        Cell cell = new Cell();
-        cell.changeState();
-        cell.changeState();
-
-        assertFalse(cell.getIsAlive());
-    }
 
 
 }

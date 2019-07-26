@@ -7,31 +7,13 @@ public class Cell {
     }
 
     public boolean getIsAlive() {
+
         return isAlive;
     }
 
-    public void setCellToalive(){
+    public void setCellToAlive(){
+        
         this.isAlive = true;
     }
-
-
-
-    public void changeState(){
-        if (!this.isAlive){
-            this.isAlive = true;
-        }
-        else {
-            this.isAlive = false;
-        }
-
-//        this.isAlive = !(this.isAlive);
-    }
-
-    public void keepAlive(){
-        this.isAlive = true;
-    }
-
-
-
 
 }

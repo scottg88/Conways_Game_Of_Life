@@ -8,16 +8,16 @@ public class CellGridTranslatorTest {
     these tests need fixing so i'm not testing string arrays
      */
 
-    @Test
-    public void whenGivenA2dArrayOfCellsReturnsA2dArrayOfStrings(){
-        CellGrid cellGrid = new CellGrid(3,3);
-
-        String[][] expectedOutput = {{"x", "x", "x"}, {"x", "x", "x"}, {"x", "x", "x"}};
-        String[][] actualOutput = CellGridTranslator.getCellGridAsStringArray(cellGrid);
-
-        assertArrayEquals(expectedOutput, actualOutput);
-
-    }
+//    @Test
+//    public void whenGivenA2dArrayOfCellsReturnsA2dArrayOfStrings(){
+//        CellGrid cellGrid = new CellGrid(3,3);
+//
+//        String[][] expectedOutput = {{"x", "x", "x"}, {"x", "x", "x"}, {"x", "x", "x"}};
+//        String[][] actualOutput = CellGridTranslator.getCellGridAsStringArray(cellGrid);
+//
+//        assertArrayEquals(expectedOutput, actualOutput);
+//
+//    }
 
 //    @Test
 //    public void whenACellsIsAliveStringIsSetToAnO(){

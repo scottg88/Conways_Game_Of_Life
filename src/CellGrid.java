@@ -27,21 +27,10 @@ public class CellGrid {
             Coordinates currentCoords = coords.get(index);
             int xIndex = currentCoords.getX() - 1;
             int yIndex = currentCoords.getY() - 1;
-            this.cellGrid[xIndex][yIndex].setCellToalive();
+            this.cellGrid[xIndex][yIndex].setCellToAlive();
         }
     }
 
-    public void killCell(int x, int y){
-        this.cellGrid[x][y].changeState();
-    }
-
-    public void resurrectCell(int x, int y){
-        this.cellGrid[x][y].changeState();
-    }
-
-    public void keepCellAlive(int x, int y){
-        this.cellGrid[x][y].keepAlive();
-    }
 
     private void initialiseCellGrid(){
         for(int row = 0; row < this.cellGrid.length; row ++){

@@ -1,8 +1,8 @@
 public class CellGridTranslator {
 
-    public static final String ANSI_BROWN = "\033[1;33m";
-    public static final String ANSI_GREEN = "\033[1;92m";
-    public static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_BROWN = "\033[1;33m";
+    private static final String ANSI_GREEN = "\033[1;92m";
+    private static final String ANSI_RESET = "\u001B[0m";
 
 
     public static String[][] getCellGridAsStringArray(CellGrid cellGrid){
