@@ -24,7 +24,7 @@ public class Main {
 
         try {
             ArrayList<Coordinates> coords = UserInputManager.getCoordinatesOfLiveCells();
-            cellGrid.setCellToAlive(coords);
+            cellGrid.setCellState(coords);
         }
         catch (IncorrectInputException message){
             System.err.println(message.getMessage());

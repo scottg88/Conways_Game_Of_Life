@@ -15,7 +15,7 @@ public class EvilOverlordTest {
 
         ArrayList<Coordinates> liveCells = new ArrayList<>();
         liveCells.add(new Coordinates(2,2));
-        cellGrid.setCellToAlive(liveCells);
+        cellGrid.setCellState(liveCells);
 
        cellGrid = evilOverlord.updateCells(cellGrid);
 
@@ -34,7 +34,7 @@ public class EvilOverlordTest {
         liveCells.add(new Coordinates(2,2));
         liveCells.add(new Coordinates(2,3));
         liveCells.add(new Coordinates(3,2));
-        cellGrid.setCellToAlive(liveCells);
+        cellGrid.setCellState(liveCells);
 
         cellGrid = evilOverlord.updateCells(cellGrid);
         assertFalse(cellGrid.getCellIsAlive(1,1));
@@ -50,7 +50,7 @@ public class EvilOverlordTest {
         liveCells.add(new Coordinates(2,1));
         liveCells.add(new Coordinates(2,2));
         liveCells.add(new Coordinates(2,3));
-        cellGrid.setCellToAlive(liveCells);
+        cellGrid.setCellState(liveCells);
 
 
         cellGrid = evilOverlord.updateCells(cellGrid);
@@ -68,7 +68,7 @@ public class EvilOverlordTest {
         liveCells.add(new Coordinates(1,1));
         liveCells.add(new Coordinates(2,2));
         liveCells.add(new Coordinates(1,3));
-        cellGrid.setCellToAlive(liveCells);
+        cellGrid.setCellState(liveCells);
 
 
         cellGrid = evilOverlord.updateCells(cellGrid);

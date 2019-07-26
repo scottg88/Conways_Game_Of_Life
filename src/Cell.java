@@ -2,8 +2,8 @@ public class Cell {
 
     private boolean isAlive;
 
-    public Cell (){
-        this.isAlive = false;
+    public Cell(boolean isAlive){
+        this.isAlive = isAlive;
     }
 
     public boolean getIsAlive() {
@@ -11,9 +11,9 @@ public class Cell {
         return isAlive;
     }
 
-    public void setCellToAlive(){
-        
-        this.isAlive = true;
+    public boolean setCellToAlive(){
+
+        return this.isAlive = true;
     }
 
 }

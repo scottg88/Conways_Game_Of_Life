@@ -25,7 +25,7 @@ public class EvilOverlord {
     public CellGrid updateCells(CellGrid cellGrid){
         ArrayList<Coordinates> nextGenCells = decideCellFate(cellGrid);
         cellGrid = new CellGrid(cellGrid.getNumberOfRows(), cellGrid.getNumberOfColumns());
-        cellGrid.setCellToAlive(nextGenCells);
+        cellGrid.setCellState(nextGenCells);
         return cellGrid;
     }
 
