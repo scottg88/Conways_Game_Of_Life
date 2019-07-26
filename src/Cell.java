@@ -10,6 +10,10 @@ public class Cell {
         return isAlive;
     }
 
+    public void setCellToalive(){
+        this.isAlive = true;
+    }
+
 
 
     public void changeState(){

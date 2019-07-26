@@ -27,7 +27,7 @@ public class CellGrid {
             Coordinates currentCoords = coords.get(index);
             int xIndex = currentCoords.getX() - 1;
             int yIndex = currentCoords.getY() - 1;
-            this.cellGrid[xIndex][yIndex].changeState();
+            this.cellGrid[xIndex][yIndex].setCellToalive();
         }
     }
 

@@ -17,8 +17,9 @@ public class EvilOverlordTest {
         liveCells.add(new Coordinates(2,2));
         cellGrid.setCellToAlive(liveCells);
 
-        evilOverlord.decideCellFate(cellGrid);
-        assertFalse(cellGrid.getCellIsAlive(2,2));
+       cellGrid = evilOverlord.updateCells(cellGrid);
+
+        assertFalse(cellGrid.getCellIsAlive(1,1));
 
     }
 
@@ -35,8 +36,8 @@ public class EvilOverlordTest {
         liveCells.add(new Coordinates(3,2));
         cellGrid.setCellToAlive(liveCells);
 
-        evilOverlord.decideCellFate(cellGrid);
-        assertFalse(cellGrid.getCellIsAlive(2,2));
+        cellGrid = evilOverlord.updateCells(cellGrid);
+        assertFalse(cellGrid.getCellIsAlive(1,1));
     }
 
     @Test
@@ -51,7 +52,9 @@ public class EvilOverlordTest {
         liveCells.add(new Coordinates(2,3));
         cellGrid.setCellToAlive(liveCells);
 
-        evilOverlord.decideCellFate(cellGrid);
+
+        cellGrid = evilOverlord.updateCells(cellGrid);
+
 
         assertTrue(cellGrid.getCellIsAlive(1,1));
     }
@@ -67,8 +70,10 @@ public class EvilOverlordTest {
         liveCells.add(new Coordinates(1,3));
         cellGrid.setCellToAlive(liveCells);
 
-        evilOverlord.decideCellFate(cellGrid);
-        assertTrue(cellGrid.getCellIsAlive(0,2));
+
+        cellGrid = evilOverlord.updateCells(cellGrid);
+
+        assertTrue(cellGrid.getCellIsAlive(0,1));
 
     }
 
