@@ -5,7 +5,7 @@ public class ConsolePrinter {
 
     public static void printGridWithFormatting(String [][] grid){
         for(String[] row : grid){
-            StringJoiner stringJoiner = new StringJoiner(" | ");
+            StringJoiner stringJoiner = new StringJoiner("  ");
             for(String column : row){
                 stringJoiner.add(String.format("%s", column));
             }

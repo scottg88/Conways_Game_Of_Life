@@ -7,7 +7,6 @@ public class Cell {
     }
 
     public boolean getIsAlive() {
-
         return isAlive;
     }
 

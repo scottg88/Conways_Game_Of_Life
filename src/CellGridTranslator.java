@@ -14,7 +14,7 @@ public class CellGridTranslator {
                     stringCellGrid[row][column] = ANSI_GREEN + "o" + ANSI_RESET;
                 }
                 else{
-                    stringCellGrid[row][column] = ANSI_BROWN + "x" + ANSI_RESET;
+                    stringCellGrid[row][column] = ANSI_BROWN + "." + ANSI_RESET;
                 }
             }
         }

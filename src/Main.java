@@ -34,12 +34,13 @@ public class Main {
 
 
 
-        for(int turns = 0; turns < 5; turns++){
+        for(int turns = 0; turns < 20; turns++){
 //          print
+            System.out.println("\n");
             newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
             cellGrid = evilOverlord.updateCells(cellGrid);
             ConsolePrinter.printGridWithFormatting(newCellGrid);
-            System.out.println("\n");
+//            System.out.println("\n");
 //          prompt for input / wait
             Thread.sleep(1000);
 //          act on input
