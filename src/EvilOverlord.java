@@ -3,30 +3,31 @@ import java.util.ArrayList;
 public class EvilOverlord {
 
 
+    public CellGrid updateCells(CellGrid cellGrid){
+        ArrayList<Coordinates> nextGenCells = decideCellFate(cellGrid);
+        cellGrid = new CellGrid(cellGrid.getNumberOfRows(), cellGrid.getNumberOfColumns());
+        cellGrid.setCellState(nextGenCells);
+        return cellGrid;
+    }
+
     private ArrayList<Coordinates> decideCellFate(CellGrid cellGrid){
         ArrayList<Coordinates> nextGenerationOfLiveCells = new ArrayList<>();
-        for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows(); cellRow++) {
-            for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns(); cellCol++) {
+        for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows()-1; cellRow++) {
+            for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns()-1; cellCol++) {
                 boolean cellIsAlive = cellGrid.getCellIsAlive(cellRow, cellCol);
+
                 int numberOfLiveNeighbours = determineNumberOfLiveNeighbours(cellGrid, cellRow, cellCol);
 
                 if (!cellIsAlive && numberOfLiveNeighbours == 3) {
                     nextGenerationOfLiveCells.add(new Coordinates(cellRow+1, cellCol+1));
                     continue;
                 }
-                if((cellIsAlive && numberOfLiveNeighbours == 2) || (cellIsAlive && numberOfLiveNeighbours ==3) ) {
+                if((cellIsAlive && numberOfLiveNeighbours == 2) || (cellIsAlive && numberOfLiveNeighbours == 3) ) {
                     nextGenerationOfLiveCells.add(new Coordinates(cellRow+1, cellCol+1));
                 }
             }
         }
         return nextGenerationOfLiveCells;
-    }
-
-    public CellGrid updateCells(CellGrid cellGrid){
-        ArrayList<Coordinates> nextGenCells = decideCellFate(cellGrid);
-        cellGrid = new CellGrid(cellGrid.getNumberOfRows(), cellGrid.getNumberOfColumns());
-        cellGrid.setCellState(nextGenCells);
-        return cellGrid;
     }
 
     private int determineNumberOfLiveNeighbours(CellGrid cellGrid, int cellRow, int cellCol) {
