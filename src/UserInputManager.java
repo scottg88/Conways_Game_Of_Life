@@ -4,7 +4,7 @@ import java.util.*;
 public class UserInputManager {
 
     private static ArrayList<Coordinates> coordinates = new ArrayList<>();
-    
+
 
     public static int[] getCellGridDimensions() throws IncorrectInputException {
         Scanner userInput = new Scanner(System.in);
