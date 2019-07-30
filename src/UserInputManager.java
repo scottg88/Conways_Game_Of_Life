@@ -3,6 +3,8 @@ import java.util.*;
 
 public class UserInputManager {
 
+//    make user input separate entirely from validation?? still difficult to test as methods with user input are calling methods that i could test..
+
     private static ArrayList<Coordinates> coordinates = new ArrayList<>();
 
 

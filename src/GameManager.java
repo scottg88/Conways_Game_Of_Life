@@ -5,7 +5,7 @@ public class GameManager {
    private CellGrid cellGrid;
 
 
-    public CellGrid initiateGame(){
+    public void initiateGame(){
 
         PrintToConsole.enterDimensionsInstruction();
 
@@ -28,7 +28,6 @@ public class GameManager {
         catch (IncorrectInputException message){
             System.err.println(message.getMessage());
         }
-        return cellGrid;
     }
 
     public void runGame() throws InterruptedException{

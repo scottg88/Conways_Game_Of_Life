@@ -18,21 +18,24 @@ public class CellGrid {
     }
 
     public int getNumberOfRows(){
+
         return this.cellGrid.length;
     }
 
     public int getNumberOfColumns(){
+
         return this.cellGrid[0].length;
     }
 
     public Boolean getCellIsAlive(int x, int y){
+
         return this.cellGrid[x][y].getIsAlive();
     }
 
     public void setCellState(ArrayList<Coordinates> coordinates){
         for(int index = 0; index < coordinates.size(); index++){
             Coordinates currentCoords = coordinates.get(index);
-//            maybe a helper to translate between hooman and compoota coordinates
+//            maybe a helper to translate between hooman and compoota coordinates?
             int xIndex = currentCoords.getX() - 1;
             int yIndex = currentCoords.getY() - 1;
             this.cellGrid[xIndex][yIndex].setCellToAlive();

@@ -9,20 +9,16 @@ public class GameRulesTest {
 //    rules of the game
 
 //    @Test
-//    public void whenCellIsAliveAndHasLessThanTwoLiveNeighboursCellDies(){
+//    public void whenCellIsAliveAndHasLessThanTwoLiveNeighboursCoordinatesAreNotAddedToNextGenerationArrayList(){
 //        GameRules gameRules = new GameRules();
 //        CellGrid cellGrid = new CellGrid(3, 3);
 //
-//        ArrayList<Coordinates> liveCells = new ArrayList<>();
-//        liveCells.add(new Coordinates(2,2));
-//        cellGrid.setCellState(liveCells);
+//        ArrayList<Coordinates> nextGenerationOfLiveCells = gameRules.decideCellFate(cellGrid);
 //
-//       cellGrid = gameRules.updateCells(cellGrid);
-//
-//        assertFalse(cellGrid.getCellIsAlive(1,1));
+//        assertFalse(nextGenerationOfLiveCells.contains);
 //
 //    }
-//
+
 //    @Test
 //    public void whenCellIsAliveAndHasGreaterThanThreeLiveNeighboursCellDies(){
 //        GameRules gameRules = new GameRules();
@@ -36,7 +32,7 @@ public class GameRulesTest {
 //        liveCells.add(new Coordinates(3,2));
 //        cellGrid.setCellState(liveCells);
 //
-//        cellGrid = gameRules.updateCells(cellGrid);
+//        gameRules.decideCellFate(cellGrid);
 //        assertFalse(cellGrid.getCellIsAlive(1,1));
 //    }
 //
@@ -53,7 +49,7 @@ public class GameRulesTest {
 //        cellGrid.setCellState(liveCells);
 //
 //
-//        cellGrid = gameRules.updateCells(cellGrid);
+//        gameRules.decideCellFate(cellGrid);
 //
 //
 //        assertTrue(cellGrid.getCellIsAlive(1,1));
@@ -71,7 +67,7 @@ public class GameRulesTest {
 //        cellGrid.setCellState(liveCells);
 //
 //
-//        cellGrid = gameRules.updateCells(cellGrid);
+//        gameRules.decideCellFate(cellGrid);
 //
 //        assertTrue(cellGrid.getCellIsAlive(0,1));
 //

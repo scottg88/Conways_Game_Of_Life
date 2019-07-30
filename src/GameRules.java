@@ -22,7 +22,4 @@ public class GameRules {
         return nextGenerationOfLiveCells;
     }
 
-
-
-
 }

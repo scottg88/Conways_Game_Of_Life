@@ -12,5 +12,6 @@ public class PrintToConsole {
 
     public static void printCellGrid(String cellGridAsString){
         System.out.println(cellGridAsString);
+        System.out.flush();
     }
 }
