@@ -1,3 +1,5 @@
+import java.util.StringJoiner;
+
 public class CellGridTranslator {
 
     private static final String ANSI_BROWN = "\033[1;33m";
@@ -19,6 +21,18 @@ public class CellGridTranslator {
             }
         }
         return stringCellGrid;
+    }
+
+    public static String formatStringGridAsSingleString(String [][] grid){
+        String gridAsString = "";
+        for(String[] row : grid){
+            StringJoiner stringJoiner = new StringJoiner("  ");
+            for(String column : row){
+                stringJoiner.add(String.format("%s", column));
+            }
+            gridAsString = gridAsString.concat(stringJoiner.toString() + "\n");
+        }
+        return gridAsString;
     }
 
 }

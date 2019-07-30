@@ -1,18 +1,17 @@
 public class Cell {
 
-    private boolean isAlive;
+    private Boolean isAlive;
 
-    public Cell(boolean isAlive){
+    public Cell(Boolean isAlive){
         this.isAlive = isAlive;
     }
 
-    public boolean getIsAlive() {
+    public Boolean getIsAlive() {
         return isAlive;
     }
 
-    public boolean setCellToAlive(){
-
-        return this.isAlive = true;
+    public void setCellToAlive(){
+        this.isAlive = true;
     }
 
 }

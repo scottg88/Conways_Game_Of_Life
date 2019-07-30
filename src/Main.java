@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         EvilOverlord evilOverlord = new EvilOverlord();
 
-        ConsolePrinter.enterDimensionsInstruction();
+        PrintToConsole.enterDimensionsInstruction();
 
 
         int[] value;
@@ -18,7 +18,7 @@ public class Main {
             return;
         }
 
-        ConsolePrinter.enterLiveCellCoordinates();
+        PrintToConsole.enterLiveCellCoordinates();
 
         CellGrid cellGrid = new CellGrid(value[0], value[1]);
 
@@ -34,16 +34,15 @@ public class Main {
 
 
 
-        for(int turns = 0; turns < 20; turns++){
-//          print
+        for(int turns = 0; turns < 4; turns++){
+
             System.out.println("\n");
             newCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
             cellGrid = evilOverlord.updateCells(cellGrid);
-            ConsolePrinter.printGridWithFormatting(newCellGrid);
-//            System.out.println("\n");
-//          prompt for input / wait
+            PrintToConsole.printCellGrid(CellGridTranslator.formatStringGridAsSingleString(newCellGrid));
+
             Thread.sleep(1000);
-//          act on input
+
 
         }
 

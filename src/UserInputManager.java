@@ -1,20 +1,31 @@
 
 import java.util.*;
 
-
 public class UserInputManager {
-    private static ArrayList<Coordinates> dimensions = new ArrayList<>();
 
-    public static int[] getCellGridDimensions() throws IncorrectInputException{
+    private static ArrayList<Coordinates> coordinates = new ArrayList<>();
+    
 
-        int[] inputValues = new int[2];
+    public static int[] getCellGridDimensions() throws IncorrectInputException {
+        Scanner userInput = new Scanner(System.in);
+        String[] splitUserInput = userInput.next().split(",");
+        return validateCellGridDimensions(splitUserInput);
+    }
+
+    public static ArrayList<Coordinates> getCoordinatesOfLiveCells() throws IncorrectInputException{
 
         Scanner userInput = new Scanner(System.in);
-        String[] stringData = userInput.next().split(",");
-        if(stringData.length == 2){
+        String[] splitIntoPairs = userInput.next().split("[| ]");
+        splitArrayIntoCoordinates(splitIntoPairs);
+        return coordinates;
+    }
+
+    private static int[] validateCellGridDimensions(String[] inputValues)throws IncorrectInputException{
+        int[] cellGridDimensions = new int[2];
+        if(inputValues.length == 2){
             try {
-                inputValues[0] = Integer.parseInt(stringData[0]);
-                inputValues[1] = Integer.parseInt(stringData[1]);
+                cellGridDimensions[0] = Integer.parseInt(inputValues[0]);
+                cellGridDimensions[1] = Integer.parseInt(inputValues[1]);
             }
             catch (NumberFormatException e){
                 throw new IncorrectInputException("Input must be number,number: please try again", e);
@@ -23,19 +34,16 @@ public class UserInputManager {
         else {
             throw new IncorrectInputException("Input must be number,number: please try again");
         }
-        return inputValues;
+        return cellGridDimensions;
     }
 
-    public static ArrayList<Coordinates> getCoordinatesOfLiveCells() throws IncorrectInputException{
-
-        Scanner userInput = new Scanner(System.in);
-        String[] splitIntoPairs = userInput.next().split("[| ]");
-        if (splitIntoPairs.length >= 1) {
+    private static void splitArrayIntoCoordinates(String[] coordinatePairs) throws IncorrectInputException {
+        if (coordinatePairs.length >= 1) {
             try {
-                for (String pair : splitIntoPairs) {
+                for (String pair : coordinatePairs) {
                     String[] splitPair = pair.split(",");
                     // validate pair?
-                    dimensions.add(new Coordinates((Integer.parseInt(splitPair[0])), (Integer.parseInt(splitPair[1]))));
+                    coordinates.add(new Coordinates((Integer.parseInt(splitPair[0])), (Integer.parseInt(splitPair[1]))));
                 }
             }
             catch(NumberFormatException e) {
@@ -45,10 +53,8 @@ public class UserInputManager {
         else {
             throw new IncorrectInputException("Input must be number,number|number,number: please try again");
         }
-        return dimensions;
-
-        }
     }
+}
 
 
 
