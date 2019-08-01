@@ -12,7 +12,6 @@ public class GameRules {
 
                 if (!cellIsAlive && numberOfLiveNeighbours == 3) {
                     nextGenerationOfLiveCells.add(new Coordinates(cellRow+1, cellCol+1));
-                    continue;
                 }
                 if((cellIsAlive && numberOfLiveNeighbours == 2) || (cellIsAlive && numberOfLiveNeighbours == 3) ) {
                     nextGenerationOfLiveCells.add(new Coordinates(cellRow+1, cellCol+1));
