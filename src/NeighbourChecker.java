@@ -4,53 +4,35 @@ import java.util.List;
 
 public class NeighbourChecker {
 
-//    public static int determineNumberOfLiveNeighbours(CellGrid cellGrid, int cellRow, int cellCol) {
-//        ArrayList<Boolean> neighbourStates = new ArrayList<>();
-//        int totalLiveNeighbours = 0;
-//        neighbourStates.add(getStateOfNeighbourAbove(cellGrid, cellRow, cellCol));
-//        neighbourStates.add(getStateOfNeighbourToTheTopRightCorner(cellGrid, cellRow, cellCol));
-//        neighbourStates.add(getStateOfNeighbourToTheRight(cellGrid, cellRow, cellCol));
-//        neighbourStates.add(getStateOfNeighbourToTheBottomRightCorner(cellGrid, cellRow, cellCol));
-//        neighbourStates.add(getStateOfNeighbourBelow(cellGrid, cellRow, cellCol));
-//        neighbourStates.add(getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol));
-//        neighbourStates.add(getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol));
-//        neighbourStates.add(getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol));
-//
-//        for(Boolean state : neighbourStates){
-//            if(state){
-//                totalLiveNeighbours += 1;
-//            }
-//        }
-//        return totalLiveNeighbours;
-//    }
 
-    public static int determineNumberOfLiveNeighbours(CellGrid cellGrid, int cellRow, int cellCol) {
+    public static int determineNumberOfLiveNeighbours(CellGrid cellGrid, Coordinates coordinates) {
 
         int totalLiveNeighbours = 0;
 
-        List<Boolean> neighbourStates = getStateOfSurroundingNeighbours(cellGrid, cellRow, cellCol);
+        List<Boolean> neighbourStates = getStateOfSurroundingNeighbours(cellGrid, coordinates);
 
-        for(Boolean state : neighbourStates){
-            if(state){
+        for(Boolean stateIsAlive : neighbourStates){
+            if(stateIsAlive){
                 totalLiveNeighbours += 1;
             }
         }
         return totalLiveNeighbours;
     }
 
-    private static List<Boolean> getStateOfSurroundingNeighbours(CellGrid cellGrid, int x, int y){
+    private static List<Boolean> getStateOfSurroundingNeighbours(CellGrid cellGrid, Coordinates coordinates){
 
-        boolean above = cellGrid.getCellIsAlive(x -1, y);
-        boolean topRightCorner = cellGrid.getCellIsAlive(x-1, y+1);
-        boolean toTheRight = cellGrid.getCellIsAlive(x, y+1);
-        boolean bottomRightCorner = cellGrid.getCellIsAlive(x+1, y+1 );
-        boolean below = cellGrid.getCellIsAlive(x+1, y);
-        boolean bottomLeftCorner = cellGrid.getCellIsAlive(x + 1, y - 1);
-        boolean toTheLeft = cellGrid.getCellIsAlive(x, y-1);
-        boolean topLeftCorner = cellGrid.getCellIsAlive(x -1, y-1);
+        boolean above = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY());
+        boolean topRightCorner = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY()+1);
+        boolean toTheRight = cellGrid.getCellIsAlive(coordinates.getX(), coordinates.getY()+1);
+        boolean bottomRightCorner = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY()+1 );
+        boolean below = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY());
+        boolean bottomLeftCorner = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY()-1);
+        boolean toTheLeft = cellGrid.getCellIsAlive(coordinates.getX(), coordinates.getY()-1);
+        boolean topLeftCorner = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY()-1);
 
         return Arrays.asList(above, topRightCorner, toTheRight, bottomRightCorner, below, bottomLeftCorner, toTheLeft, topLeftCorner);
     }
+
 
     public static Coordinates convertToWrappedCoordinates(CellGrid cellGrid, Coordinates coords) {
         if(coords.getX() == 0-1){
@@ -69,6 +51,26 @@ public class NeighbourChecker {
             return new Coordinates(coords.getX(), coords.getY());
         }
     }
+
+    //    public static int determineNumberOfLiveNeighbours(CellGrid cellGrid, int cellRow, int cellCol) {
+//        ArrayList<Boolean> neighbourStates = new ArrayList<>();
+//        int totalLiveNeighbours = 0;
+//        neighbourStates.add(getStateOfNeighbourAbove(cellGrid, cellRow, cellCol));
+//        neighbourStates.add(getStateOfNeighbourToTheTopRightCorner(cellGrid, cellRow, cellCol));
+//        neighbourStates.add(getStateOfNeighbourToTheRight(cellGrid, cellRow, cellCol));
+//        neighbourStates.add(getStateOfNeighbourToTheBottomRightCorner(cellGrid, cellRow, cellCol));
+//        neighbourStates.add(getStateOfNeighbourBelow(cellGrid, cellRow, cellCol));
+//        neighbourStates.add(getStateOfNeighbourToTheBottomLeftCorner(cellGrid, cellRow, cellCol));
+//        neighbourStates.add(getStateOfNeighbourToTheLeft(cellGrid, cellRow, cellCol));
+//        neighbourStates.add(getStateOfNeighbourToTheTopLeftCorner(cellGrid, cellRow, cellCol));
+//
+//        for(Boolean state : neighbourStates){
+//            if(state){
+//                totalLiveNeighbours += 1;
+//            }
+//        }
+//        return totalLiveNeighbours;
+//    }
 
 //    private static boolean getStateOfNeighbourAbove(CellGrid cellGrid, int cellRow, int cellCol){
 //        if(cellRow > 0){
