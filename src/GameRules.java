@@ -8,7 +8,8 @@ public class GameRules {
         for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows()-1; cellRow++) {
             for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns()-1; cellCol++) {
                 boolean cellIsAlive = cellGrid.getCellIsAlive(cellRow, cellCol);
-                int numberOfLiveNeighbours = NeighbourChecker.determineNumberOfLiveNeighbours(cellGrid, cellRow, cellCol);
+                Coordinates coordinates = new Coordinates(cellRow, cellCol);
+                int numberOfLiveNeighbours = NeighbourChecker.determineNumberOfLiveNeighbours(cellGrid, coordinates);
 
                 if (!cellIsAlive && numberOfLiveNeighbours == 3) {
                     nextGenerationOfLiveCells.add(new Coordinates(cellRow+1, cellCol+1));

@@ -9,9 +9,10 @@ public class NeighbourCheckerTest {
 @Test
     public void whenCellHasNoLiveNeighboursDetermineNumberOfLiveNeighboursReturnsZero(){
     CellGrid cellGrid = new CellGrid(3,3);
+    Coordinates coordinates = new Coordinates(1,1);
 
     int expectedLiveNeighbours = 0;
-    int actualLiveNeighbours = NeighbourChecker.determineNumberOfLiveNeighbours(cellGrid, 1,1);
+    int actualLiveNeighbours = NeighbourChecker.determineNumberOfLiveNeighbours(cellGrid,coordinates);
 
     assertEquals(expectedLiveNeighbours, actualLiveNeighbours);
 
