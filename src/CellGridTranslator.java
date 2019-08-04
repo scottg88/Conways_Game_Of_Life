@@ -1,8 +1,10 @@
+import java.util.StringJoiner;
+
 public class CellGridTranslator {
 
-    public static final String ANSI_BROWN = "\033[1;33m";
-    public static final String ANSI_GREEN = "\033[1;92m";
-    public static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_BROWN = "\033[1;33m";
+    private static final String ANSI_GREEN = "\033[1;92m";
+    private static final String ANSI_RESET = "\u001B[0m";
 
 
     public static String[][] getCellGridAsStringArray(CellGrid cellGrid){
@@ -14,11 +16,23 @@ public class CellGridTranslator {
                     stringCellGrid[row][column] = ANSI_GREEN + "o" + ANSI_RESET;
                 }
                 else{
-                    stringCellGrid[row][column] = ANSI_BROWN + "x" + ANSI_RESET;
+                    stringCellGrid[row][column] = ANSI_BROWN + "." + ANSI_RESET;
                 }
             }
         }
         return stringCellGrid;
+    }
+
+        public static String formatStringGridAsSingleString(String [][] grid){
+        String gridAsString = "";
+        for(String[] row : grid){
+            StringJoiner stringJoiner = new StringJoiner("  ");
+            for(String column : row){
+                stringJoiner.add(String.format("%s", column));
+            }
+            gridAsString = gridAsString.concat(stringJoiner.toString() + "\n");
+        }
+        return gridAsString;
     }
 
 }

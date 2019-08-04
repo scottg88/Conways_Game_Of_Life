@@ -1,33 +1,21 @@
 public class Cell {
 
-    private boolean isAlive;
+    private Boolean isAlive;
 
-    public Cell (){
-        this.isAlive = false;
+
+    public Cell(Boolean isAlive){
+
+        this.isAlive = isAlive;
     }
 
-    public boolean getIsAlive() {
+    public Boolean getIsAlive() {
+
         return isAlive;
     }
 
+    public void setCellToAlive(){
 
-
-    public void changeState(){
-        if (!this.isAlive){
-            this.isAlive = true;
-        }
-        else {
-            this.isAlive = false;
-        }
-
-//        this.isAlive = !(this.isAlive);
-    }
-
-    public void keepAlive(){
         this.isAlive = true;
     }
-
-
-
 
 }
