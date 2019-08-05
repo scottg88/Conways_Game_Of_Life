@@ -12,29 +12,30 @@ public class NeighbourCheckerTest {
     Coordinates coordinates = new Coordinates(1,1);
 
     int expectedLiveNeighbours = 0;
-    int actualLiveNeighbours = NeighbourChecker.determineNumberOfLiveNeighbours(cellGrid,coordinates);
+    int actualLiveNeighbours = NeighbourChecker.determineTotalNumberOfLiveNeighbours(cellGrid,coordinates);
 
     assertEquals(expectedLiveNeighbours, actualLiveNeighbours);
 
 }
 
-//@Test
-//    public void whenCellHasTwoLiveNeighboursDetermineNumberOfLiveNeighboursReturnsTwo(){
-//    CellGrid cellGrid = new CellGrid(3,3);
-//
-//    ArrayList<Coordinates> liveCells = new ArrayList<>();
-//    liveCells.add(new Coordinates(1,2));
-//    liveCells.add(new Coordinates(2,1));
-//    liveCells.add(new Coordinates(2,2));
-//    liveCells.add(new Coordinates(2,3));
-//    cellGrid.setCellState(liveCells);
-//
-//    int expectedLiveNeighbours = 3;
-//    int actualLiveNeighbours = NeighbourChecker.determineNumberOfLiveNeighbours(cellGrid, 1,1);
-//
-//    assertEquals(expectedLiveNeighbours, actualLiveNeighbours);
-//
-//}
+@Test
+    public void whenCellHasLiveNeighboursDetermineNumberOfLiveNeighboursWillReturnTheNumberOfLiveNeighbours(){
+    CellGrid cellGrid = new CellGrid(3,3);
+    Coordinates coordinates = new Coordinates(1, 1);
+
+    ArrayList<Coordinates> liveCells = new ArrayList<>();
+    liveCells.add(new Coordinates(1,2));
+    liveCells.add(new Coordinates(2,1));
+    liveCells.add(new Coordinates(2,2));
+    liveCells.add(new Coordinates(2,3));
+    cellGrid.setCellState(liveCells);
+
+    int expectedLiveNeighbours = 3;
+    int actualLiveNeighbours = NeighbourChecker.determineTotalNumberOfLiveNeighbours(cellGrid, coordinates);
+
+    assertEquals(expectedLiveNeighbours, actualLiveNeighbours);
+
+}
 
     @Test
     public void whenCoordinatesDontNeedWrappingConvertToWrappedCoordinatesReturnsOriginalCoordinates(){

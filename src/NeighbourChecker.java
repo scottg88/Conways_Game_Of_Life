@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class NeighbourChecker {
 
 
-    public static int determineNumberOfLiveNeighbours(CellGrid cellGrid, Coordinates coordinates) {
+    public static int determineTotalNumberOfLiveNeighbours(CellGrid cellGrid, Coordinates coordinates) {
 
         int totalLiveNeighbours = 0;
 
@@ -19,18 +20,31 @@ public class NeighbourChecker {
         return totalLiveNeighbours;
     }
 
-    private static List<Boolean> getStateOfSurroundingNeighbours(CellGrid cellGrid, Coordinates coordinates){
+    private static ArrayList<Boolean> getStateOfSurroundingNeighbours(CellGrid cellGrid, ArrayList<Coordinates> neighbourLocations){
+        ArrayList<Boolean> neighbourStates = new ArrayList<>();
+        for(Coordinates location : neighbourLocations){
+            neighbourStates.add(cellGrid.getCellIsAlive(location.getX(), location.getY()));
+        }
 
-        boolean above = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY());
-        boolean topRightCorner = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY()+1);
-        boolean toTheRight = cellGrid.getCellIsAlive(coordinates.getX(), coordinates.getY()+1);
-        boolean bottomRightCorner = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY()+1 );
-        boolean below = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY());
-        boolean bottomLeftCorner = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY()-1);
-        boolean toTheLeft = cellGrid.getCellIsAlive(coordinates.getX(), coordinates.getY()-1);
-        boolean topLeftCorner = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY()-1);
+//        boolean above = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY());
+//        boolean topRightCorner = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY()+1);
+//        boolean toTheRight = cellGrid.getCellIsAlive(coordinates.getX(), coordinates.getY()+1);
+//        boolean bottomRightCorner = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY()+1 );
+//        boolean below = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY());
+//        boolean bottomLeftCorner = cellGrid.getCellIsAlive(coordinates.getX()+1, coordinates.getY()-1);
+//        boolean toTheLeft = cellGrid.getCellIsAlive(coordinates.getX(), coordinates.getY()-1);
+//        boolean topLeftCorner = cellGrid.getCellIsAlive(coordinates.getX()-1, coordinates.getY()-1);
 
-        return Arrays.asList(above, topRightCorner, toTheRight, bottomRightCorner, below, bottomLeftCorner, toTheLeft, topLeftCorner);
+//        return Arrays.asList(above, topRightCorner, toTheRight, bottomRightCorner, below, bottomLeftCorner, toTheLeft, topLeftCorner);
+        return neighbourStates;
+    }
+
+    public static ArrayList<Coordinates> convertNeighboursToCoordinates(CellGrid cellGrid, Coordinates coordinates){
+        ArrayList<Coordinates> neighbourLocations = new ArrayList<>();
+
+        CellNeighbours.ABOVE = neighbourLocations.add(new Coordinates(coordinates.getX()-1, coordinates.getY()));
+
+        return neighbourLocations;
     }
 
 
@@ -52,7 +66,7 @@ public class NeighbourChecker {
         }
     }
 
-    //    public static int determineNumberOfLiveNeighbours(CellGrid cellGrid, int cellRow, int cellCol) {
+    //    public static int determineTotalNumberOfLiveNeighbours(CellGrid cellGrid, int cellRow, int cellCol) {
 //        ArrayList<Boolean> neighbourStates = new ArrayList<>();
 //        int totalLiveNeighbours = 0;
 //        neighbourStates.add(getStateOfNeighbourAbove(cellGrid, cellRow, cellCol));
