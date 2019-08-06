@@ -10,7 +10,7 @@ public class NeighbourChecker {
 
         int totalLiveNeighbours = 0;
 
-        List<Boolean> neighbourStates = getStateOfSurroundingNeighbours(cellGrid, coordinates);
+        ArrayList<Boolean> neighbourStates = getStateOfSurroundingNeighbours(cellGrid, coordinates);
 
         for(Boolean stateIsAlive : neighbourStates){
             if(stateIsAlive){
@@ -20,8 +20,9 @@ public class NeighbourChecker {
         return totalLiveNeighbours;
     }
 
-    private static ArrayList<Boolean> getStateOfSurroundingNeighbours(CellGrid cellGrid, ArrayList<Coordinates> neighbourLocations){
+    private static ArrayList<Boolean> getStateOfSurroundingNeighbours(CellGrid cellGrid, Coordinates coordinates){
         ArrayList<Boolean> neighbourStates = new ArrayList<>();
+        ArrayList<Coordinates> neighbourLocations = convertNeighboursToCoordinates(cellGrid, coordinates);
         for(Coordinates location : neighbourLocations){
             neighbourStates.add(cellGrid.getCellIsAlive(location.getX(), location.getY()));
         }
@@ -40,31 +41,56 @@ public class NeighbourChecker {
     }
 
     public static ArrayList<Coordinates> convertNeighboursToCoordinates(CellGrid cellGrid, Coordinates coordinates){
+
         ArrayList<Coordinates> neighbourLocations = new ArrayList<>();
 
-        CellNeighbours.ABOVE = neighbourLocations.add(new Coordinates(coordinates.getX()-1, coordinates.getY()));
+        if((coordinates.getX() > 0) && (coordinates.getX() < cellGrid.getNumberOfRows()-1) && (coordinates.getY() > 0) && coordinates.getY()< cellGrid.getNumberOfRows()-1) {
+            neighbourLocations.add(new Coordinates(coordinates.getX() - 1, coordinates.getY()));
+            neighbourLocations.add(new Coordinates(coordinates.getX() - 1, coordinates.getY() + 1));
+            neighbourLocations.add(new Coordinates(coordinates.getX(), coordinates.getY() + 1));
+            neighbourLocations.add(new Coordinates(coordinates.getX() + 1, coordinates.getY() + 1));
+            neighbourLocations.add(new Coordinates(coordinates.getX() + 1, coordinates.getY()));
+            neighbourLocations.add(new Coordinates(coordinates.getX() + 1, coordinates.getY() - 1));
+            neighbourLocations.add(new Coordinates(coordinates.getX(), coordinates.getY() - 1));
+            neighbourLocations.add(new Coordinates(coordinates.getX() - 1, coordinates.getY() - 1));
+        }
+        else if(coordinates.getX() == 0-1){
+            neighbourLocations.add(new Coordinates(cellGrid.getNumberOfRows()-1, coordinates.getY()));
+        }
+        else if(coordinates.getX() == (cellGrid.getNumberOfRows()-1)+1){
+            neighbourLocations.add(new Coordinates(0, coordinates.getY()));
+        }
+        else if(coordinates.getY() == 0-1){
+            neighbourLocations.add(new Coordinates(coordinates.getX(), cellGrid.getNumberOfColumns()-1));
+        }
+        else if(coordinates.getY() == (cellGrid.getNumberOfColumns()-1)+1){
+            neighbourLocations.add(new Coordinates(coordinates.getX(), 0));
+        }
+        else {
+            neighbourLocations.add(new Coordinates(coordinates.getX(), coordinates.getY()));
+        }
 
         return neighbourLocations;
     }
 
 
-    public static Coordinates convertToWrappedCoordinates(CellGrid cellGrid, Coordinates coords) {
-        if(coords.getX() == 0-1){
-            return new Coordinates(cellGrid.getNumberOfRows()-1, coords.getY());
-        }
-        else if(coords.getX() == (cellGrid.getNumberOfRows()-1)+1){
-            return new Coordinates(0, coords.getY());
-        }
-        else if(coords.getY() == 0-1){
-            return new Coordinates(coords.getX(), cellGrid.getNumberOfColumns()-1);
-        }
-        else if(coords.getY() == (cellGrid.getNumberOfColumns()-1)+1){
-            return new Coordinates(coords.getX(), 0);
-        }
-        else {
-            return new Coordinates(coords.getX(), coords.getY());
-        }
-    }
+//    public static Coordinates convertToWrappedCoordinates(CellGrid cellGrid, Coordinates coords) {
+//        if(coords.getX() == 0-1){
+//            return new Coordinates(cellGrid.getNumberOfRows()-1, coords.getY());
+//        }
+//        else if(coords.getX() == (cellGrid.getNumberOfRows()-1)+1){
+//            return new Coordinates(0, coords.getY());
+//        }
+//        else if(coords.getY() == 0-1){
+//            return new Coordinates(coords.getX(), cellGrid.getNumberOfColumns()-1);
+//        }
+//        else if(coords.getY() == (cellGrid.getNumberOfColumns()-1)+1){
+//            return new Coordinates(coords.getX(), 0);
+//        }
+//        else {
+//            return new Coordinates(coords.getX(), coords.getY());
+//        }
+//    }
 
     //    public static int determineTotalNumberOfLiveNeighbours(CellGrid cellGrid, int cellRow, int cellCol) {
 //        ArrayList<Boolean> neighbourStates = new ArrayList<>();

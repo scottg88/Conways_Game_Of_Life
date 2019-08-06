@@ -1,6 +1,10 @@
 
 public class PrintToConsole {
 
+//    naming - especially printCellGrid
+//    rename class to outputManage?
+
+
 
     public static void enterDimensionsInstruction(){
         System.out.println("Please enter dimensions of grid; i.e. rows,columns");

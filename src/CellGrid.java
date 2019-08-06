@@ -35,7 +35,6 @@ public class CellGrid {
     public void setCellState(ArrayList<Coordinates> coordinates){
         for(int index = 0; index < coordinates.size(); index++){
             Coordinates currentCoords = coordinates.get(index);
-//            maybe a helper to translate between hooman and compoota coordinates?
             int xIndex = currentCoords.getX();
             int yIndex = currentCoords.getY();
             this.cellGrid[xIndex][yIndex].setCellToAlive();

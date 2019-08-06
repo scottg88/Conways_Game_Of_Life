@@ -26,8 +26,8 @@ public class UserInputManager {
         int[] cellGridDimensions = new int[2];
         if(inputValues.length == 2){
             try {
-                cellGridDimensions[0] = Integer.parseInt(inputValues[0])-1;
-                cellGridDimensions[1] = Integer.parseInt(inputValues[1])-1;
+                cellGridDimensions[0] = Integer.parseInt(inputValues[0]);
+                cellGridDimensions[1] = Integer.parseInt(inputValues[1]);
             }
             catch (NumberFormatException e){
                 throw new IncorrectInputException("Input must be number,number: please try again", e);
@@ -45,7 +45,7 @@ public class UserInputManager {
                 for (String pair : coordinatePairs) {
                     String[] splitPair = pair.split(",");
                     // validate pair?
-                    coordinates.add(new Coordinates((Integer.parseInt(splitPair[0])), (Integer.parseInt(splitPair[1]))));
+                    coordinates.add(new Coordinates((Integer.parseInt(splitPair[0])-1), (Integer.parseInt(splitPair[1]))-1));
                 }
             }
             catch(NumberFormatException e) {

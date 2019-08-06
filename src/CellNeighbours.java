@@ -1,5 +1,4 @@
 public enum CellNeighbours {
-
     ABOVE,
     TOP_RIGHT_CORNER,
     RIGHT,
@@ -7,5 +6,8 @@ public enum CellNeighbours {
     BELOW,
     BOTTOM_LEFT_CORNER,
     LEFT,
-    TOP_LEFT_CORNER
+    TOP_LEFT_CORNER,
+    WRAP
 }
+
+

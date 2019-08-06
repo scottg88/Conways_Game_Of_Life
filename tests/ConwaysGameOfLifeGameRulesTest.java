@@ -3,20 +3,20 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-public class GameRulesTest {
+public class ConwaysGameOfLifeGameRulesTest {
 
 //    cellgrid
 //    rules of the game
 
     @Test
     public void whenCellIsAliveAndHasLessThanTwoLiveNeighboursCoordinatesAreNotAddedToNextGenerationArrayList(){
-        GameRules gameRules = new GameRules();
+        ConwaysGameOfLifeGameRules conwaysGameOfLifeGameRules = new ConwaysGameOfLifeGameRules();
         CellGrid cellGrid = new CellGrid(3, 3);
         ArrayList<Coordinates> liveCells = new ArrayList<>();
         liveCells.add(new Coordinates(1,1));
         cellGrid.setCellState(liveCells);
 
-        ArrayList<Coordinates> nextGenerationOfLiveCells = gameRules.decideCellFate(cellGrid);
+        ArrayList<Coordinates> nextGenerationOfLiveCells = conwaysGameOfLifeGameRules.decideCellFate(cellGrid);
 
         assertFalse(nextGenerationOfLiveCells.contains(new Coordinates(1,1)));
 
@@ -24,7 +24,7 @@ public class GameRulesTest {
 
     @Test
     public void whenCellIsAliveAndHasGreaterThanThreeLiveNeighboursCellCoordinatesAreNotAddedToNextGenerationArrayList(){
-        GameRules gameRules = new GameRules();
+        ConwaysGameOfLifeGameRules conwaysGameOfLifeGameRules = new ConwaysGameOfLifeGameRules();
         CellGrid cellGrid = new CellGrid(3, 3);
 
         ArrayList<Coordinates> liveCells = new ArrayList<>();
@@ -35,14 +35,14 @@ public class GameRulesTest {
         liveCells.add(new Coordinates(3,2));
         cellGrid.setCellState(liveCells);
 
-        ArrayList<Coordinates> nextGenerationOfLiveCells = gameRules.decideCellFate(cellGrid);
+        ArrayList<Coordinates> nextGenerationOfLiveCells = conwaysGameOfLifeGameRules.decideCellFate(cellGrid);
 
         assertFalse(nextGenerationOfLiveCells.contains(new Coordinates(1,1)));
     }
 
     @Test
     public void whenCellIsAliveAndHasTwoOrThreeLiveNeighboursCellCoordinatesAreAddedToNextGenerationArrayList(){
-        GameRules gameRules = new GameRules();
+        ConwaysGameOfLifeGameRules conwaysGameOfLifeGameRules = new ConwaysGameOfLifeGameRules();
         CellGrid cellGrid = new CellGrid(3, 3);
 
         ArrayList<Coordinates> liveCells = new ArrayList<>();
@@ -52,7 +52,7 @@ public class GameRulesTest {
         liveCells.add(new Coordinates(2,3));
         cellGrid.setCellState(liveCells);
 
-        ArrayList<Coordinates> nextGenerationOfLiveCells = gameRules.decideCellFate(cellGrid);
+        ArrayList<Coordinates> nextGenerationOfLiveCells = conwaysGameOfLifeGameRules.decideCellFate(cellGrid);
         System.out.println(nextGenerationOfLiveCells.size());
 
         for(Coordinates xy : nextGenerationOfLiveCells) {
@@ -65,7 +65,7 @@ public class GameRulesTest {
 
 //    @Test
 //    public void whenCellIsDeadAndHasThreeLiveNeighboursCellBecomesAlive(){
-//        GameRules gameRules = new GameRules();
+//        ConwaysGameOfLifeGameRules gameRules = new ConwaysGameOfLifeGameRules();
 //        CellGrid cellGrid = new CellGrid(3, 3);
 //
 //        ArrayList<Coordinates> liveCells = new ArrayList<>();
