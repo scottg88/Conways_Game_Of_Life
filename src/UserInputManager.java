@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public class UserInputManager {
@@ -22,7 +21,7 @@ public class UserInputManager {
         return coordinates;
     }
 
-    private static int[] validateCellGridDimensions(String[] inputValues)throws IncorrectInputException{
+    private static int[] validateCellGridDimensions(String[] inputValues) throws IncorrectInputException{
         int[] cellGridDimensions = new int[2];
         if(inputValues.length == 2){
             try {

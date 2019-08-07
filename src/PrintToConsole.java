@@ -1,4 +1,3 @@
-
 public class PrintToConsole {
 
 //    naming - especially printCellGrid

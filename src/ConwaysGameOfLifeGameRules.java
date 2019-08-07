@@ -8,14 +8,14 @@ public class ConwaysGameOfLifeGameRules implements GameRules{
         for(int cellRow = 0; cellRow < cellGrid.getNumberOfRows()-1; cellRow++) {
             for (int cellCol = 0; cellCol < cellGrid.getNumberOfColumns()-1; cellCol++) {
                 boolean cellIsAlive = cellGrid.getCellIsAlive(cellRow, cellCol);
-                Coordinates coordinates = new Coordinates(cellRow, cellCol);
-                int numberOfLiveNeighbours = NeighbourChecker.determineTotalNumberOfLiveNeighbours(cellGrid, coordinates);
+                Coordinates currentCellCoordinates = new Coordinates(cellRow, cellCol);
+                int numberOfLiveNeighbours = NeighbourChecker.determineTotalNumberOfLiveNeighbours(cellGrid, currentCellCoordinates);
 
-                if (!cellIsAlive && numberOfLiveNeighbours == 3) {
-                    nextGenerationOfLiveCells.add(new Coordinates(cellRow+1, cellCol+1));
+                if (numberOfLiveNeighbours == 3) {
+                    nextGenerationOfLiveCells.add(new Coordinates(cellRow, cellCol));
                 }
-                if((cellIsAlive && numberOfLiveNeighbours == 2) || (cellIsAlive && numberOfLiveNeighbours == 3) ) {
-                    nextGenerationOfLiveCells.add(new Coordinates(cellRow+1, cellCol+1));
+                if(cellIsAlive && numberOfLiveNeighbours == 2) {
+                    nextGenerationOfLiveCells.add(new Coordinates(cellRow, cellCol));
                 }
             }
         }
