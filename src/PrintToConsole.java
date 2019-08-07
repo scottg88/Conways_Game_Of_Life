@@ -1,5 +1,8 @@
-
 public class PrintToConsole {
+
+//    naming - especially printString
+//    rename class to outputManage?
+
 
 
     public static void enterDimensionsInstruction(){
@@ -10,8 +13,8 @@ public class PrintToConsole {
         System.out.println("Please enter coordinates of live cells; i.e. x,y|x,y|x,y");
     }
 
-    public static void printCellGrid(String cellGridAsString){
-        System.out.println(cellGridAsString);
+    public static void printString(String string){
+        System.out.println(string);
         System.out.flush();
     }
 }

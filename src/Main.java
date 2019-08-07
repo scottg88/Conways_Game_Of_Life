@@ -1,10 +1,10 @@
-import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args)throws InterruptedException {
 
-    GameManager gameManager = new GameManager();
+    GameRules gameRules = new ConwaysGameOfLifeGameRules();
+    GameManager gameManager = new GameManager(gameRules);
 
     gameManager.initiateGame();
     gameManager.runGame();
