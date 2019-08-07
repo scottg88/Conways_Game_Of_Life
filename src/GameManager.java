@@ -47,7 +47,7 @@ public class GameManager {
 
             System.out.println("\n");
             String [][] printableCellGrid = CellGridTranslator.getCellGridAsStringArray(cellGrid);
-            PrintToConsole.printCellGrid(CellGridTranslator.formatStringGridAsSingleString(printableCellGrid));
+            PrintToConsole.printString(CellGridTranslator.formatStringGridAsSingleString(printableCellGrid));
 
             cellGrid = updateCells(cellGrid);
 

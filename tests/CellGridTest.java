@@ -53,5 +53,12 @@ public class CellGridTest {
         assertFalse(cellIsAlive);
     }
 
+//    validate minimum acceptable grid dimensions
+
+//    @Test
+//    public void ifDimensionsAreLessThanOneAndOneThrowsException(){
+//
+//    }
+
 
 }
